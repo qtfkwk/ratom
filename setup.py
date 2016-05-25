@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # File: setup.py
-# Version: 1.0.2
+# Version: 1.0.3
 # Date: 2016-05-25
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
@@ -9,7 +9,7 @@
 
 import setuptools
 
-v = '1.0.2'
+v = '1.0.3'
 
 cfg = dict(
     name='ratom',
@@ -49,10 +49,14 @@ if __name__ == '__main__':
         import datetime
         today = datetime.datetime.now().strftime('%Y-%m-%d')
         files = 'ratom/*.py setup.py *.sh'
+        doc = 'doc/source/index.rst'
+        conf = 'doc/source/conf.py'
         c = [
-            "sed -i _ 's/^# Date: .*$/# Date: %s/' %s" % (today, files),
-            "sed -i _ 's/^# Version: .*$/# Version: %s/' %s" % (v, files),
-            "rm ratom/*.py_ setup.py_ *.sh_",
+            r"sed -i _ 's/^# Date: .*$/# Date: %s/' %s" % (today, files),
+            r"sed -i _ 's/^# Version: .*$/# Version: %s/' %s" % (v, files),
+            r"sed -i _ 's/ratom-[0-9]*\.[0-9]*\.[0-9]*/ratom-%s/' %s" % (v, doc),
+            r"sed -i _ 's/[0-9]*\.[0-9]*\.[0-9]/%s/' %s" % (v, conf),
+            r"rm ratom/*.py_ setup.py_ *.sh_",
         ]
         for i in c:
             print ratom.t.bold('$ ' + i)
@@ -62,10 +66,10 @@ if __name__ == '__main__':
             sys.exit(0)
     if 'doc' in a:
         c = [
-            'make -C doc html latexpdf',
-            'cp -R doc/build/html doc/ratom-doc-html',
-            'tar czf doc/ratom-doc-html.tgz -C doc ratom-doc-html',
-            'cp doc/build/latex/ratom.pdf doc/ratom-doc.pdf',
+            r'make -C doc html latexpdf',
+            r'cp -R doc/build/html doc/ratom-doc-html',
+            r'tar czf doc/ratom-doc-html.tgz -C doc ratom-doc-html',
+            r'cp doc/build/latex/ratom.pdf doc/ratom-doc.pdf',
         ]
         for i in c:
             print ratom.t.bold('$ ' + i)

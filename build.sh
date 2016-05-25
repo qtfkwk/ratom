@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # File: build.sh
-# Version: 1.0.2
+# Version: 1.0.3
 # Date: 2016-05-25
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk

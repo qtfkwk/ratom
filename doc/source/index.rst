@@ -30,8 +30,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-1.0.0-py2-none-any.whl
-    pip install ratom-1.0.0.zip
+    pip install ratom-1.0.3-py2-none-any.whl
+    pip install ratom-1.0.3.zip
 
 Usage
 -----
@@ -107,6 +107,8 @@ Versions
 +---------+------------+--------------------------------------+
 | 1.0.2   | 2016-05-25 | More work on release script and      |
 |         |            | documentation                        |
++---------+------------+--------------------------------------+
+| 1.0.3   | 2016-05-25 | Improved release automation          |
 +---------+------------+--------------------------------------+
 
 Issues
