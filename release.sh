@@ -18,7 +18,7 @@ git commit -m release\ $v
 git push
 git tag -a $v -m release\ $v
 git push origin --tags
-#./setup.py sdist upload
-#./setup.py bdist_wheel upload
-#./setup.py upload_sphinx
+./setup.py sdist --formats=zip upload
+./setup.py bdist_wheel upload
+./setup.py upload_sphinx
 

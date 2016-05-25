@@ -73,10 +73,5 @@ if __name__ == '__main__':
         sys.argv = filter(lambda x: x != 'doc', sys.argv)
         if len(sys.argv) < 2:
             sys.exit(0)
-    if 'sdist' in a and not '--formats' in a:
-        for i in range(len(a)):
-            if a[i] == 'sdist':
-                sys.argv.insert(i + 1, '--formats=zip')
-                break
     setuptools.setup(**cfg)
 
