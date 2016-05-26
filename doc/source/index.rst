@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-1.0.6-py2-none-any.whl
-    pip install ratom-1.0.6.zip
+    pip install ratom-1.0.7-py2-none-any.whl
+    pip install ratom-1.0.7.zip
 
 Usage
 -----
@@ -127,6 +127,9 @@ Versions
 +---------+------------+---------------------------------------------+
 | 1.0.6   | 2016-05-26 | Add aptget and yum plugins to documentation |
 +---------+------------+---------------------------------------------+
+| 1.0.7   | 2016-05-26 | Added descriptions of aptget and yum        |
+|         |            | plugins to Plugins section of documentation |
++---------+------------+---------------------------------------------+
 
 Issues
 ------
@@ -200,6 +203,13 @@ function in order to actually perform the update.
 This process prevents blindly attempting to run plugins on systems
 that either don't have the software they update or more importantly,
 when the user doesn't want RATOM to update them.
+
+aptget
+------
+
+Updates Debian or Debian-based system (Ubuntu, Kali...) via
+``apt-get update``, ``apt-get dist-upgrade -y``, then removes
+unnecessary packages via ``apt-get autoremove -y``.
 
 cask
 ----
@@ -328,6 +338,12 @@ rbenv
 Show the installed versions of Ruby and the latest version in the 2.3
 branch; does not install any version of Ruby for you.
 
+yum
+---
+
+Updates Red Hat or a derivative (Fedora, CentOS...) via
+``yum update -y``.
+
 API Reference
 =============
 
@@ -337,14 +353,14 @@ ratom.common
 .. automodule:: ratom.common
    :members:
 
+Plugins
+-------
+
 ratom.all
----------
+'''''''''
 
 .. automodule:: ratom.all
    :members:
-
-Plugins
--------
 
 ratom.aptget
 ''''''''''''
