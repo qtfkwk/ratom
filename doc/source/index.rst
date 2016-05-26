@@ -4,18 +4,26 @@ RATOM Documentation
 Overview
 ========
 
+Description
+-----------
+
+RATOM stands for "Rage Against The Outdated Machine".
+
+Its purpose is to simply update all the things that need updating.
+
+The primary use for RATOM is under current Python 2.x on a supported
+operating system that uses one or more of the supported software.
+
+Features
+--------
+
 .. include:: ../../README.rst
 
 Design
 ------
 
 * Show all configuration, commands, and output
-
-    * intermediate commands are shown in the log versus the output for
-      brevity's sake
-
-* Use a modular plugin architecture, not only for code organization,
-  but to easily support more software
+* Use a modular plugin architecture
 * Generating a report should be easy
 * Run sequentially to avoid issues
 * Halt when a command fails
@@ -30,16 +38,16 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-1.0.3-py2-none-any.whl
-    pip install ratom-1.0.3.zip
+    pip install ratom-1.0.4-py2-none-any.whl
+    pip install ratom-1.0.4.zip
 
 Usage
 -----
 
 ::
 
-    usage: all.py [-h] [-n] [-c PATH] [-l PATH] [--show-config]
-                  [plugin [plugin ...]]
+    usage: ratom [-h] [-n] [-c PATH] [-l PATH] [--show-config]
+                 [plugin [plugin ...]]
     
     optional arguments:
       -h, --help     show this help message and exit
@@ -74,7 +82,7 @@ RATOM can be used in a few ways...
    ``argv`` argument or a configuration dictionary via the ``cfg``
    argument.
    Note that if you want to call a ``check`` function, you'll need to
-   import ``raton.common``.
+   import ``ratom.common``.
    See also the `API Reference`_.
 
    ::
@@ -97,19 +105,24 @@ RATOM can be used in a few ways...
 Versions
 --------
 
-+---------+------------+--------------------------------------+
-| Version | Date       | Comments                             |
-+=========+============+======================================+
-| 1.0.0   | 2016-05-25 | Initial release                      |
-+---------+------------+--------------------------------------+
-| 1.0.1   | 2016-05-25 | Fixed release script, rearranged     |
-|         |            | documentation                        |
-+---------+------------+--------------------------------------+
-| 1.0.2   | 2016-05-25 | More work on release script and      |
-|         |            | documentation                        |
-+---------+------------+--------------------------------------+
-| 1.0.3   | 2016-05-25 | Improved release automation          |
-+---------+------------+--------------------------------------+
++---------+------------+---------------------------------------------+
+| Version | Date       | Comments                                    |
++=========+============+=============================================+
+| 1.0.0   | 2016-05-25 | Initial release                             |
++---------+------------+---------------------------------------------+
+| 1.0.1   | 2016-05-25 | Fixed release script, rearranged            |
+|         |            | documentation                               |
++---------+------------+---------------------------------------------+
+| 1.0.2   | 2016-05-25 | More work on release script and             |
+|         |            | documentation                               |
++---------+------------+---------------------------------------------+
+| 1.0.3   | 2016-05-25 | Improved release automation                 |
++---------+------------+---------------------------------------------+
+| 1.0.4   | 2016-05-26 | Documentation: moved content from readme,   |
+|         |            | fixed typo, renamed apple plugin to macosx; |
+|         |            | Code: run brew upgrade via shell, log       |
+|         |            | exceptions as errors, log command           |
++---------+------------+---------------------------------------------+
 
 Issues
 ------
@@ -131,6 +144,7 @@ To do
 -----
 
 * support Debian/Ubuntu (apt-get), Red Hat/Fedora/CentOS (yum)...
+* resolve symlinks in git plugin and operate against the targets
 * run ``brew upgrade --all`` with the pyenv version set to
   'system' without using ``pyenv global``
 * update Perl modules via CPANM for all perlbrew perls?
@@ -183,14 +197,6 @@ function in order to actually perform the update.
 This process prevents blindly attempting to run plugins on systems
 that either don't have the software they update or more importantly,
 when the user doesn't want RATOM to update them.
-
-apple
------
-
-Updates Apple Mac OSX via the ``softwareupdate`` utility.
-An update may require reboot and the output will indicate this; the
-rest of the update process will continue and it is the user's
-responsibility to perform the reboot.
 
 cask
 ----
@@ -263,6 +269,14 @@ vim by restoring the "system" version of Python via pyenv before
 running the upgrade command.
 This has had mixed success, has some unintentional temporary
 system-wide side effects, and should be considered a work-in-progress.
+
+macosx
+------
+
+Updates Mac OSX via the ``softwareupdate`` utility.
+An update may require reboot and the output will indicate this; the
+rest of the update process will continue and it is the user's
+responsibility to perform the reboot.
 
 microsoft
 ---------

@@ -3,8 +3,8 @@
 """update Homebrew packages"""
 
 # File: ratom/homebrew.py
-# Version: 1.0.3
-# Date: 2016-05-25
+# Version: 1.0.4
+# Date: 2016-05-26
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -26,13 +26,12 @@ def main(argv=None, cfg=None):
         return
     begin('Homebrew')
     v = runp('pyenv global')[1].strip('\n')
-    run([
-        'brew update',
-        'pyenv global system',
-        'brew upgrade --all',
-        'pyenv global %s' % v,
-        'brew cleanup',
-    ], dryrun=cfg['dryrun'])
+    d = cfg['dryrun']
+    run('brew update', dryrun=d)
+    run('pyenv global system', dryrun=d)
+    run('brew upgrade --all', dryrun=d, shell=True)
+    run('pyenv global %s' % v, dryrun=d)
+    run('brew cleanup', dryrun=d)
     end()
     log.info('homebrew: finished')
 

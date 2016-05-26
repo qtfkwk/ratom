@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 
 # File: setup.py
-# Version: 1.0.3
-# Date: 2016-05-25
+# Version: 1.0.4
+# Date: 2016-05-26
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 import setuptools
 
-v = '1.0.3'
+v = '1.0.4'
 
 cfg = dict(
     name='ratom',
@@ -56,7 +56,7 @@ if __name__ == '__main__':
             r"sed -i _ 's/^# Version: .*$/# Version: %s/' %s" % (v, files),
             r"sed -i _ 's/ratom-[0-9]*\.[0-9]*\.[0-9]*/ratom-%s/' %s" % (v, doc),
             r"sed -i _ 's/[0-9]*\.[0-9]*\.[0-9]/%s/' %s" % (v, conf),
-            r"rm ratom/*.py_ setup.py_ *.sh_",
+            r"rm -f ratom/*.py_ setup.py_ *.sh_ %s_ %s_" % (doc, conf),
         ]
         for i in c:
             print ratom.t.bold('$ ' + i)

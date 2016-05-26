@@ -1,8 +1,8 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 1.0.3
-# Date: 2016-05-25
+# Version: 1.0.4
+# Date: 2016-05-26
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -74,12 +74,13 @@ def end():
     """end a section in the standard way"""
     print '```\n'
 
-def run(c, prompt='$ ', dryrun=False):
+def run(c, prompt='$ ', dryrun=False, shell=False):
     """print and run one or more commands
 
     * ``c``: command or list of commands
     * ``prompt``: prompt to display when printing the command
     * ``dryrun``: just prints the command if true
+    * ``shell``: passed to ``run_``
     """
     if not isinstance(c, list):
         c = [c]
@@ -89,7 +90,7 @@ def run(c, prompt='$ ', dryrun=False):
             print t.bold_red(prompt + i)
         else:
             print t.bold(prompt + i)
-            run_(i)
+            run_(i, shell)
             print
 
 def run_(c, shell=False):
@@ -105,7 +106,9 @@ def run_(c, shell=False):
         p = subprocess.Popen(shlex.split(c))
     r = p.wait()
     if r != 0:
-        raise CommandFailed('Command "%s" exited with %d!' % (c, r))
+        e = 'Command "%s" exited with %d!' % (c, r)
+        log.error(e)
+        raise CommandFailed(e)
     return r
 
 def runp(c, check=False):
@@ -123,6 +126,7 @@ def runp(c, check=False):
     r = p.wait()
     if r != 0 and not check:
         e = 'Intermediate command "%s" exited with %d!' % (c, r)
+        log.error(e)
         raise IntermediateCommandFailed(e)
     return (r, out, err)
 
@@ -158,7 +162,7 @@ def header(r, c, cfg, show_config=False):
         print '```\n' + json_dumps(cfg) + '```\n'
         print t.bold_yellow('### Running') + '\n'
         print '```'
-        print json_dumps(r)
+        print json_dumps(r).strip('\n')
         end()
 
 def args(argv=None):
@@ -222,6 +226,7 @@ def args(argv=None):
         datefmt='%Y-%m-%d %H:%M:%S %Z')
     global log
     log = logging.getLogger('ratom')
+    log.info('command: `%s`' % ' '.join(sys.argv))
     log.info('arguments: %s' % a)
     log.info('configuration from %s: %s' % (c, cfg))
     log.info('running configuration: %s' % r)
