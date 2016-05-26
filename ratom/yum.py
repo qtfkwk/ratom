@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-"""update global NPM modules"""
+"""update Red Hat via yum"""
 
-# File: ratom/npm.py
+# File: ratom/yum.py
 # Version: 1.0.5
 # Date: 2016-05-26
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
@@ -11,25 +11,23 @@
 
 from common import *
 
+import logging
+
 def check():
-    """check if can update global NPM modules"""
-    return runp('which npm', True)[0] == 0
+    """check if can update Red Hat via yum"""
+    return runp('which yum', True)[0] == 0
 
 def main(argv=None, cfg=None):
-    """update global NPM modules"""
+    """update Red Hat via yum"""
     if cfg == None:
         cfg = args(argv)
     log = logging.getLogger('ratom')
-    log.info('npm: started')
+    log.info('yum: started')
     if not check():
-        log.info('npm: failed check')
+        log.info('yum: failed check')
         return
-    begin('NPM')
-    run('npm outdated -g')
-    run('npm update -g', dryrun=cfg['dryrun'])
-    run('npm outdated -g')
-    end()
-    log.info('npm: finished')
+    section('yum', 'sudo yum update -y', dryrun=cfg['dryrun'])
+    log.info('yum: finished')
 
 if __name__ == '__main__':
     main()

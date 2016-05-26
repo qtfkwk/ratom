@@ -1,7 +1,7 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 1.0.4
+# Version: 1.0.5
 # Date: 2016-05-26
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
@@ -16,6 +16,8 @@ defaults = dict(
     plugins=[
         'macosx',
         'freebsd',
+        'aptget',
+        'yum',
         'clamav',
         'homebrew',
         'cask',
@@ -121,7 +123,7 @@ def runp(c, check=False):
     """
     log.info('running `%s`' % c)
     pipe = subprocess.PIPE
-    p = subprocess.Popen(shlex.split(c), stdout=pipe)
+    p = subprocess.Popen(shlex.split(c), stdout=pipe, stderr=pipe)
     (out, err) = p.communicate()
     r = p.wait()
     if r != 0 and not check:

@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-1.0.4-py2-none-any.whl
-    pip install ratom-1.0.4.zip
+    pip install ratom-1.0.5-py2-none-any.whl
+    pip install ratom-1.0.5.zip
 
 Usage
 -----
@@ -123,6 +123,8 @@ Versions
 |         |            | Code: run brew upgrade via shell, log       |
 |         |            | exceptions as errors, log command           |
 +---------+------------+---------------------------------------------+
+| 1.0.5   | 2016-05-26 | Pipe stderr in runp, aptget and yum plugins |
++---------+------------+---------------------------------------------+
 
 Issues
 ------
@@ -143,7 +145,6 @@ Contact
 To do
 -----
 
-* support Debian/Ubuntu (apt-get), Red Hat/Fedora/CentOS (yum)...
 * resolve symlinks in git plugin and operate against the targets
 * run ``brew upgrade --all`` with the pyenv version set to
   'system' without using ``pyenv global``
