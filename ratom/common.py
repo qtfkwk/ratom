@@ -1,7 +1,7 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 1.0.7
+# Version: 1.1.0
 # Date: 2016-05-26
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
@@ -246,8 +246,8 @@ class Error(Exception):
     """general error exception"""
     pass
 
-class UnknownModule(Error):
-    """encountered an unknown module"""
+class UnknownPlugin(Error):
+    """encountered an unknown plugin"""
     pass
 
 class CommandFailed(Error):

@@ -3,7 +3,7 @@
 """imports and runs all plugins"""
 
 # File: ratom/all.py
-# Version: 1.0.7
+# Version: 1.1.0
 # Date: 2016-05-26
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
@@ -59,7 +59,7 @@ def main(argv=None, cfg=None):
         if not m in plugins:
             e = 'Unknown plugin "%s"!' % m
             log.error(e)
-            raise UnknownModule(e)
+            raise UnknownPlugin(e)
         plugins[m].main(cfg=cfg)
     log.info('all: finished')
 

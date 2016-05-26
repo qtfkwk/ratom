@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-1.0.7-py2-none-any.whl
-    pip install ratom-1.0.7.zip
+    pip install ratom-1.1.0-py2-none-any.whl
+    pip install ratom-1.1.0.zip
 
 Usage
 -----
@@ -129,6 +129,9 @@ Versions
 +---------+------------+---------------------------------------------+
 | 1.0.7   | 2016-05-26 | Added descriptions of aptget and yum        |
 |         |            | plugins to Plugins section of documentation |
++---------+------------+---------------------------------------------+
+| 1.1.0   | 2016-05-26 | Changed UnknownModule exception to          |
+|         |            | UnknownPlugin                               |
 +---------+------------+---------------------------------------------+
 
 Issues
