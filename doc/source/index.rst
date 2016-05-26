@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-1.0.5-py2-none-any.whl
-    pip install ratom-1.0.5.zip
+    pip install ratom-1.0.6-py2-none-any.whl
+    pip install ratom-1.0.6.zip
 
 Usage
 -----
@@ -124,6 +124,8 @@ Versions
 |         |            | exceptions as errors, log command           |
 +---------+------------+---------------------------------------------+
 | 1.0.5   | 2016-05-26 | Pipe stderr in runp, aptget and yum plugins |
++---------+------------+---------------------------------------------+
+| 1.0.6   | 2016-05-26 | Add aptget and yum plugins to documentation |
 +---------+------------+---------------------------------------------+
 
 Issues
@@ -344,6 +346,12 @@ ratom.all
 Plugins
 -------
 
+ratom.aptget
+''''''''''''
+
+.. automodule:: ratom.aptget
+   :members:
+
 ratom.cask
 ''''''''''
 
@@ -432,5 +440,11 @@ ratom.rbenv
 '''''''''''
 
 .. automodule:: ratom.rbenv
+   :members:
+
+ratom.yum
+'''''''''
+
+.. automodule:: ratom.yum
    :members:
 
