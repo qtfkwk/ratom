@@ -1,8 +1,8 @@
 * Supports Mac OSX, FreeBSD (freebsd-update, portsnap, pkg),
   Debian and derivatives (apt-get), Red Hat and derivatives (yum),
-  ClamAV/freshclam, Homebrew, Cask, Perlbrew, CPAN Minus, pyenv, pip,
-  rbenv, gem, npm, Metasploit Framework, Git repositories, and
-  Microsoft AutoUpdate via a plugin architecture
+  ClamAV/freshclam, Homebrew, Cask, Perlbrew, CPAN Minus (cpanm),
+  pyenv, pip, rbenv, gem, npm, Metasploit Framework, Git repositories,
+  and Microsoft AutoUpdate via a plugin architecture
 * Markdown-formatted output with all update and informational commands
   shown with their output and in pretty terminal colors via the
   `blessings <https://pypi.python.org/pypi/blessings>`_ package; also

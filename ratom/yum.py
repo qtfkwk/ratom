@@ -3,31 +3,27 @@
 """update Red Hat via yum"""
 
 # File: ratom/yum.py
-# Version: 1.1.0
-# Date: 2016-05-26
+# Version: 2.0.0
+# Date: 2016-06-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 from common import *
 
-import logging
-
 def check():
     """check if can update Red Hat via yum"""
-    return runp('which yum', True)[0] == 0
+    return has('yum')
 
 def main(argv=None, cfg=None):
     """update Red Hat via yum"""
-    if cfg == None:
-        cfg = args(argv)
-    log = logging.getLogger('ratom')
-    log.info('yum: started')
+    cfg = init(argv, cfg)
+    info('yum: started')
     if not check():
-        log.info('yum: failed check')
+        info('yum: failed check')
         return
     section('yum', 'sudo yum update -y', dryrun=cfg['dryrun'])
-    log.info('yum: finished')
+    info('yum: finished')
 
 if __name__ == '__main__':
     main()

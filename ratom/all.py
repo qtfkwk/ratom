@@ -3,8 +3,8 @@
 """imports and runs all plugins"""
 
 # File: ratom/all.py
-# Version: 1.1.0
-# Date: 2016-05-26
+# Version: 2.0.0
+# Date: 2016-06-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -20,7 +20,7 @@ import gem
 import git
 import homebrew
 import macosx
-import microsoft
+import macosx_microsoft
 import msf
 import npm
 import perlbrew
@@ -39,7 +39,7 @@ plugins = dict(
     git=git,
     homebrew=homebrew,
     macosx=macosx,
-    microsoft=microsoft,
+    macosx_microsoft=macosx_microsoft,
     msf=msf,
     npm=npm,
     perlbrew=perlbrew,
@@ -51,17 +51,15 @@ plugins = dict(
 
 def main(argv=None, cfg=None):
     """runs all plugins"""
-    if cfg == None:
-        cfg = args(argv)
-    log = logging.getLogger('ratom')
-    log.info('all: started')
+    cfg = init(argv, cfg)
+    info('all: started')
     for m in cfg['plugins']:
         if not m in plugins:
             e = 'Unknown plugin "%s"!' % m
-            log.error(e)
+            error(e)
             raise UnknownPlugin(e)
         plugins[m].main(cfg=cfg)
-    log.info('all: finished')
+    info('all: finished')
 
 if __name__ == '__main__':
     main()

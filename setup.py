@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 
 # File: setup.py
-# Version: 1.1.0
-# Date: 2016-05-26
+# Version: 2.0.0
+# Date: 2016-06-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 import setuptools
 
-v = '1.1.0'
+v = '2.0.0'
 
 cfg = dict(
     name='ratom',
@@ -21,6 +21,9 @@ cfg = dict(
     packages=setuptools.find_packages(),
     install_requires=[
         'blessings',
+        'bs4',
+        'kron',
+        'requests',
     ],
     url='https://github.com/qtfkwk/ratom',
     classifiers=[
@@ -48,14 +51,17 @@ if __name__ == '__main__':
     if 'update' in a:
         import datetime
         today = datetime.datetime.now().strftime('%Y-%m-%d')
+        vre = r'[0-9]*\.[0-9]*\.[0-9]'
         files = 'ratom/*.py setup.py *.sh'
         doc = 'doc/source/index.rst'
         conf = 'doc/source/conf.py'
         c = [
+            r"sed -i _ 's/^__version__ = '\''%s'\''/" % vre + \
+                r"__version__ = '\''%s'\''/' ratom/common.py" % v,
             r"sed -i _ 's/^# Date: .*$/# Date: %s/' %s" % (today, files),
             r"sed -i _ 's/^# Version: .*$/# Version: %s/' %s" % (v, files),
             r"sed -i _ 's/ratom-[0-9]*\.[0-9]*\.[0-9]*/ratom-%s/' %s" % (v, doc),
-            r"sed -i _ 's/[0-9]*\.[0-9]*\.[0-9]/%s/' %s" % (v, conf),
+            r"sed -i _ 's/%s/%s/' %s" % (vre, v, conf),
             r"rm -f ratom/*.py_ setup.py_ *.sh_ %s_ %s_" % (doc, conf),
         ]
         for i in c:

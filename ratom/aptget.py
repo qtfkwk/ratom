@@ -3,28 +3,24 @@
 """update Debian via apt-get"""
 
 # File: ratom/aptget.py
-# Version: 1.1.0
-# Date: 2016-05-26
+# Version: 2.0.0
+# Date: 2016-06-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 from common import *
 
-import logging
-
 def check():
     """check if can update Debian via apt-get"""
-    return runp('which apt-get', True)[0] == 0
+    return has('apt-get')
 
 def main(argv=None, cfg=None):
     """update Debian via apt-get"""
-    if cfg == None:
-        cfg = args(argv)
-    log = logging.getLogger('ratom')
-    log.info('aptget: started')
+    cfg = init(argv, cfg)
+    info('aptget: started')
     if not check():
-        log.info('aptget: failed check')
+        info('aptget: failed check')
         return
     c = [
         'sudo apt-get update',
@@ -32,7 +28,7 @@ def main(argv=None, cfg=None):
         'sudo apt-get autoremove -y',
     ]
     section('apt-get', c, dryrun=cfg['dryrun'])
-    log.info('aptget: finished')
+    info('aptget: finished')
 
 if __name__ == '__main__':
     main()

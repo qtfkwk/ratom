@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-1.1.0-py2-none-any.whl
-    pip install ratom-1.1.0.zip
+    pip install ratom-2.0.0-py2-none-any.whl
+    pip install ratom-2.0.0.zip
 
 Usage
 -----
@@ -59,9 +59,9 @@ Usage
       -l PATH        Log to PATH; default: ~/.ratom/ratom.log
       --show-config  Show full configuration details
       plugin         Specific plugin(s) to run in the specified order; default:
-                     "macosx freebsd clamav homebrew cask perlbrew cpanm pyenv pip
-                     rbenv gem npm msf git microsoft"; ignored if running a plugin
-                     directly
+                     "macosx freebsd aptget yum clamav homebrew cask perlbrew
+                     cpanm pyenv pip rbenv gem npm msf git macosx_microsoft";
+                     ignored if running a plugin directly
 
 Examples
 --------
@@ -81,26 +81,21 @@ RATOM can be used in a few ways...
    function and pass any arguments in command-line fashion via the
    ``argv`` argument or a configuration dictionary via the ``cfg``
    argument.
-   Note that if you want to call a ``check`` function, you'll need to
-   import ``ratom.common``.
    See also the `API Reference`_.
 
    ::
 
         $ python
+        >>> import ratom.clamav
+        >>> ratom.clamav.check()
+        True
+        >>> ratom.clamav.main(['-n'])
+        ...
+        >>> ratom.clamav.main()
+        ...
         >>> import ratom.all
         >>> ratom.all.main()
         ...
-        >>> ratom.clamav.main()
-        ...
-        >>> import ratom.clamav
-        >>> ratom.clamav.main()
-        ...
-        >>> ratom.clamav.main(['-n'])
-        ...
-        >>> import ratom.common
-        >>> ratom.clamav.check()
-        True
 
 Versions
 --------
@@ -133,6 +128,16 @@ Versions
 | 1.1.0   | 2016-05-26 | Changed UnknownModule exception to          |
 |         |            | UnknownPlugin                               |
 +---------+------------+---------------------------------------------+
+| 2.0.0   | 2016-06-05 | Replaced pyenv global commands and fixed    |
+|         |            | issue with vim in homebrew plugin; using    |
+|         |            | os.path.realpath instead of readlink in git |
+|         |            | plugin; has function; added ckver, current, |
+|         |            | latest functions to freebsd plugin; using   |
+|         |            | kron instead of date command; renamed       |
+|         |            | microsoft plugin to macosx_microsoft;       |
+|         |            | simplified function naming, logging;        |
+|         |            | updated documentation                       |
++---------+------------+---------------------------------------------+
 
 Issues
 ------
@@ -154,8 +159,6 @@ To do
 -----
 
 * resolve symlinks in git plugin and operate against the targets
-* run ``brew upgrade --all`` with the pyenv version set to
-  'system' without using ``pyenv global``
 * update Perl modules via CPANM for all perlbrew perls?
 * update Python modules via pip for all pyenv pythons?
 * update Ruby gems for all rbenv rubys?
@@ -247,15 +250,11 @@ freebsd
 
 Actually attempts to update several individual FreeBSD-specific items
 as a single plugin.
-Supported items are freebsd-update, portsnap, pkg, and a custom
-utility called ckver, that queries the freebsd.org website to compare
-the latest release version to the current running version on the
-system.
+Supported items are freebsd-update, portsnap, and pkg.
 This plugin only updates the currently-tracked branch of FreeBSD; it
 does not upgrade your system to the current release branch; i.e. if
 your system has 10.2-RELEASE and 10.3-RELEASE is available, it will
-not upgrade to 10.3-RELEASE for you, but ckver will tell you if a new
-release is avaiable.
+not upgrade to 10.3-RELEASE for you, but it will tell you.
 
 gem
 ---
@@ -268,11 +267,13 @@ git
 ---
 
 Performs a ``git pull`` for each repository or symlink to a repository
-in ``~/.ratom/git/`` after first showing where the symlink points (if
-it's a symlink) and the set of tracked repositories via
-``git remote -v``.
+in ``~/.ratom/git/`` after first showing the remote upstream
+repository via ``git remote -v``.
 The ``check`` function fails if either the ``~/.ratom/git`` directory
-does not exist or it does not contain any repositories.
+does not exist or it does not contain any symlinks or directories.
+Each repository path is *expanded* via ``os.path.realpath`` (`doc
+<https://docs.python.org/3/library/os.path.html#os.path.realpath>`_)
+to operate directly against the canonical path.
 
 homebrew
 --------
@@ -280,11 +281,13 @@ homebrew
 Updates Homebrew via ``brew update; brew upgrade --all``, then
 performs clean up via ``brew cleanup``.
 
-It also attempts to avoid specific issues encountered when upgrading
-vim by restoring the "system" version of Python via pyenv before
-running the upgrade command.
-This has had mixed success, has some unintentional temporary
-system-wide side effects, and should be considered a work-in-progress.
+It also attempts to avoid a specific issue discussed `here
+<https://github.com/Homebrew/homebrew-core/issues/1165>`_ encountered
+when upgrading Vim (and using pyenv) by temporarily restoring the
+"system" version of Python via the PYENV_VERSION environment variable
+before running the upgrade command.
+Note that this has initial success but should still be considered a
+work-in-progress.
 
 macosx
 ------
@@ -294,8 +297,8 @@ An update may require reboot and the output will indicate this; the
 rest of the update process will continue and it is the user's
 responsibility to perform the reboot.
 
-microsoft
----------
+macosx_microsoft
+----------------
 
 Runs the GUI-based Microsoft AutoUpdate utility, which updates
 Microsoft software installed on a Mac OSX system.
@@ -419,10 +422,10 @@ ratom.macosx
 .. automodule:: ratom.macosx
    :members:
 
-ratom.microsoft
-'''''''''''''''
+ratom.macosx_microsoft
+''''''''''''''''''''''
 
-.. automodule:: ratom.microsoft
+.. automodule:: ratom.macosx_microsoft
    :members:
 
 ratom.msf

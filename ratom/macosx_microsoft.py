@@ -2,9 +2,9 @@
 
 """update Microsoft software on Mac OSX"""
 
-# File: ratom/microsoft.py
-# Version: 1.1.0
-# Date: 2016-05-26
+# File: ratom/macosx_microsoft.py
+# Version: 2.0.0
+# Date: 2016-06-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -19,16 +19,14 @@ def check():
 
 def main(argv=None, cfg=None):
     """update Microsoft software on Mac OSX"""
-    if cfg == None:
-        cfg = args(argv)
-    log = logging.getLogger('ratom')
-    log.info('microsoft: started')
+    cfg = init(argv, cfg)
+    info('macosx_microsoft: started')
     if not check():
-        log.info('microsoft: failed check')
+        info('macosx_microsoft: failed check')
         return
     c = 'open -W %s' % _f.replace(' ', r'\ ')
-    section('Microsoft', c, dryrun=cfg['dryrun'])
-    log.info('microsoft: finished')
+    section('Microsoft AutoUpdate (Mac OSX)', c, dryrun=cfg['dryrun'])
+    info('macosx_microsoft: finished')
 
 if __name__ == '__main__':
     main()

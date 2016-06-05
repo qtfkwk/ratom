@@ -3,8 +3,8 @@
 """update global NPM modules"""
 
 # File: ratom/npm.py
-# Version: 1.1.0
-# Date: 2016-05-26
+# Version: 2.0.0
+# Date: 2016-06-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -13,23 +13,21 @@ from common import *
 
 def check():
     """check if can update global NPM modules"""
-    return runp('which npm', True)[0] == 0
+    return has('npm')
 
 def main(argv=None, cfg=None):
     """update global NPM modules"""
-    if cfg == None:
-        cfg = args(argv)
-    log = logging.getLogger('ratom')
-    log.info('npm: started')
+    cfg = init(argv, cfg)
+    info('npm: started')
     if not check():
-        log.info('npm: failed check')
+        info('npm: failed check')
         return
-    begin('NPM')
+    section_begin('NPM')
     run('npm outdated -g')
     run('npm update -g', dryrun=cfg['dryrun'])
-    run('npm outdated -g')
-    end()
-    log.info('npm: finished')
+    run('npm outdated -g', dryrun=cfg['dryrun'])
+    section_end()
+    info('npm: finished')
 
 if __name__ == '__main__':
     main()
