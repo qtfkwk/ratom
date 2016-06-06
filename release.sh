@@ -1,8 +1,8 @@
 #!/bin/sh -x
 
 # File: release.sh
-# Version: 2.0.0
-# Date: 2016-06-05
+# Version: 2.0.1
+# Date: 2016-06-06
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)

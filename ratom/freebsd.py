@@ -3,8 +3,8 @@
 """update FreeBSD"""
 
 # File: ratom/freebsd.py
-# Version: 2.0.0
-# Date: 2016-06-05
+# Version: 2.0.1
+# Date: 2016-06-06
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -22,7 +22,7 @@ def check():
     ])
 
 def current():
-    if which('freebsd-version'):
+    if has('freebsd-version'):
         return runp('freebsd-version')[1].split('-')[0]
     else:
         return 'n/a'
@@ -56,10 +56,11 @@ def main(argv=None, cfg=None):
         info('freebsd: failed check')
         return
     section_begin('FreeBSD', ckver())
+    d = cfg['dryrun']
     if 'freebsd-update' in which:
-        needed = runp('freebsd-update fetch', verbose=True)[1]
-        if not re.search(r'No updates needed to update system', needed):
-            run('freebsd-update install', dryrun=cfg['dryrun'])
+        needed = runp('freebsd-update fetch', dryrun=d, verbose=True)[1]
+        if not (d or re.search(r'No updates needed to update system', needed)):
+            run('freebsd-update install', dryrun=d)
     if 'portsnap' in which:
         run('portsnap fetch update', dryrun=cfg['dryrun'])
     if 'pkg' in which:

@@ -1,15 +1,15 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 2.0.0
-# Date: 2016-06-05
+# Version: 2.0.1
+# Date: 2016-06-06
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 # Variables
 
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 directory = '~/.ratom'
 conf = directory + '/config.json'
 defaults = dict(
@@ -85,7 +85,7 @@ def has(*commands):
     """test if command(s) are in PATH"""
     r = True
     for c in commands:
-        if runp('which ' + c, True)[0] != 0:
+        if runp('which ' + c, check=True)[0] != 0:
             r = False
             break
     return r
@@ -239,29 +239,40 @@ def run_(c, shell=False):
         raise CommandFailed(e)
     return r
 
-def runp(c, check=False, verbose=False):
+def runp(c, prompt='$ ', dryrun=False, shell=False, check=False, verbose=False):
     """run a command and return the exit code, stdout and stderr back
     to the caller
 
     * ``c``: command
+    * ``prompt``: prompt to display when printing the command
+    * ``dryrun``: just prints the command if true
+    * ``shell``: passed to ``run_``
     * ``check``: don't raise an exception if true; for use only by ``check``
       functions
     * ``verbose``: print command and output if true
     """
     if verbose:
-        print t.bold('$ ' + c)
+        if dryrun:
+            print t.bold_red(prompt + c)
+        else:
+            print t.bold(prompt + c)
     info('running `%s`' % c)
     pipe = subprocess.PIPE
-    p = subprocess.Popen(shlex.split(c), stdout=pipe, stderr=pipe)
-    (out, err) = p.communicate()
-    r = p.wait()
-    if verbose:
-        print err
-        print out
-    if r != 0 and not check:
-        e = 'Intermediate command "%s" exited with %d!' % (c, r)
-        error(e)
-        raise IntermediateCommandFailed(e)
+    r, out, err = 0, '', ''
+    if not dryrun:
+        if shell:
+            p = subprocess.Popen(c, shell=True, stdout=pipe, stderr=pipe)
+        else:
+            p = subprocess.Popen(shlex.split(c), stdout=pipe, stderr=pipe)
+        (out, err) = p.communicate()
+        r = p.wait()
+        if verbose:
+            print err
+            print out
+        if r != 0 and not check:
+            e = 'Intermediate command "%s" exited with %d!' % (c, r)
+            error(e)
+            raise IntermediateCommandFailed(e)
     return (r, out, err)
 
 def section(n, c, dryrun=False):

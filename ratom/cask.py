@@ -3,8 +3,8 @@
 """update Cask packages"""
 
 # File: ratom/cask.py
-# Version: 2.0.0
-# Date: 2016-06-05
+# Version: 2.0.1
+# Date: 2016-06-06
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -18,7 +18,7 @@ def check():
     if not has('brew'):
         return False
     try:
-        runp('brew cask', True)
+        runp('brew cask', check=True)
     except:
         return False
     return True

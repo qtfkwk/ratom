@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.0.0-py2-none-any.whl
-    pip install ratom-2.0.0.zip
+    pip install ratom-2.0.1-py2-none-any.whl
+    pip install ratom-2.0.1.zip
 
 Usage
 -----
@@ -138,6 +138,8 @@ Versions
 |         |            | simplified function naming, logging;        |
 |         |            | updated documentation                       |
 +---------+------------+---------------------------------------------+
+| 2.0.1   | 2016-06-06 | Fixes for freebsd plugin                    |
++---------+------------+---------------------------------------------+
 
 Issues
 ------
@@ -158,7 +160,6 @@ Contact
 To do
 -----
 
-* resolve symlinks in git plugin and operate against the targets
 * update Perl modules via CPANM for all perlbrew perls?
 * update Python modules via pip for all pyenv pythons?
 * update Ruby gems for all rbenv rubys?
