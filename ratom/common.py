@@ -1,15 +1,15 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 2.0.1
-# Date: 2016-06-06
+# Version: 2.0.2
+# Date: 2016-07-19
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 # Variables
 
-__version__ = '2.0.1'
+__version__ = '2.0.2'
 directory = '~/.ratom'
 conf = directory + '/config.json'
 defaults = dict(
@@ -202,13 +202,14 @@ def replace(replacements, s):
         s = re.sub(r[0], r[1], s)
     return s
 
-def run(c, prompt='$ ', dryrun=False, shell=False):
+def run(c, prompt='$ ', dryrun=False, shell=False, good=0):
     """print and run one or more commands
 
     * ``c``: command or list of commands
     * ``prompt``: prompt to display when printing the command
     * ``dryrun``: just prints the command if true
     * ``shell``: passed to ``run_``
+    * ``good``: allowed exit codes; single integer or list of integers
     """
     if not isinstance(c, list):
         c = [c]
@@ -218,22 +219,25 @@ def run(c, prompt='$ ', dryrun=False, shell=False):
             print t.bold_red(prompt + i)
         else:
             print t.bold(prompt + i)
-            run_(i, shell)
+            run_(i, shell, good)
             print
 
-def run_(c, shell=False):
+def run_(c, shell=False, good=0):
     """just run a command
 
     * ``c``: command
     * ``shell``: run via shell if true; avoid when possible, but necessary for
       things like ``*`` expansion
+    * ``good``: allowed exit codes; single integer or list of integers
     """
     if shell:
         p = subprocess.Popen(c, shell=True)
     else:
         p = subprocess.Popen(shlex.split(c))
     r = p.wait()
-    if r != 0:
+    if not isinstance(good, list):
+        good = [good]
+    if not r in good:
         e = 'Command "%s" exited with %d!' % (c, r)
         error(e)
         raise CommandFailed(e)
@@ -275,15 +279,16 @@ def runp(c, prompt='$ ', dryrun=False, shell=False, check=False, verbose=False):
             raise IntermediateCommandFailed(e)
     return (r, out, err)
 
-def section(n, c, dryrun=False):
+def section(n, c, dryrun=False, good=0):
     """shorthand for a simple section
 
     * ``n``: name
     * ``c``: command or list of commands
     * ``dryrun``: passed to ``run`` function
+    * ``good``: allowed exit codes; single integer or list of integers
     """
     section_begin(n)
-    run(c, dryrun=dryrun)
+    run(c, dryrun=dryrun, good=good)
     section_end()
 
 def section_begin(m, a='', backticks=True, prefix='##'):

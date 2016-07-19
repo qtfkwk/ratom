@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.0.1-py2-none-any.whl
-    pip install ratom-2.0.1.zip
+    pip install ratom-2.0.2-py2-none-any.whl
+    pip install ratom-2.0.2.zip
 
 Usage
 -----
@@ -139,6 +139,11 @@ Versions
 |         |            | updated documentation                       |
 +---------+------------+---------------------------------------------+
 | 2.0.1   | 2016-06-06 | Fixes for freebsd plugin                    |
++---------+------------+---------------------------------------------+
+| 2.0.2   | 2016-07-18 | Fix cask plugin failing when `cask list`    |
+|         |            | gives name along with " (!)"; fix clamav    |
+|         |            | plugin failing due to exiting with 1 when   |
+|         |            | already up-to-date                          |
 +---------+------------+---------------------------------------------+
 
 Issues
