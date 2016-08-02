@@ -3,8 +3,8 @@
 """update Ruby gems"""
 
 # File: ratom/npm.py
-# Version: 2.0.2
-# Date: 2016-07-19
+# Version: 2.0.3
+# Date: 2016-08-02
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)

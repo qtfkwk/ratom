@@ -1,15 +1,15 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 2.0.2
-# Date: 2016-07-19
+# Version: 2.0.3
+# Date: 2016-08-02
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 # Variables
 
-__version__ = '2.0.2'
+__version__ = '2.0.3'
 directory = '~/.ratom'
 conf = directory + '/config.json'
 defaults = dict(
@@ -100,6 +100,18 @@ def header(r, c, cfg, show_config=False):
     """
     print t.bold_green('# Rage Against The Outdated Machine, v' + __version__) \
         + '\n'
+    print '```' + t.bold("""
+                              s
+                             :8
+   .u    .         u        .88           u.      ..    .     :
+ .d88B :@8c     us888u.    :888ooo  ...ue888b   .888: x888  x888.
+="8888f8888r .@88 "8888" -*8888888  888R Y888r ~`8888~'888X`?888f`
+  4888>'88"  9888  9888    8888     888R I888>   X888  888X '888>
+  4888> '    9888  9888    8888     888R I888>   X888  888X '888>
+  4888>      9888  9888    8888     888R I888>   X888  888X '888>
+ .d888L .+   9888  9888   .8888Lu= u8888cJ888    X888  888X '888>
+ ^"8888*"    "888*""888"  ^%888*    "*888*P"    "*88%""*88" '888!`
+    "Y"       ^Y"   ^Y'     'Y"       'Y"         `~    "    `"`""") + '\n```\n'
     print kron.timestamp().str(fmt='national') + '\n'
     if r['dryrun']:
         print t.bold_on_red('**THIS IS A DRY RUN!**') + '\n'

@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.0.2-py2-none-any.whl
-    pip install ratom-2.0.2.zip
+    pip install ratom-2.0.3-py2-none-any.whl
+    pip install ratom-2.0.3.zip
 
 Usage
 -----
@@ -144,6 +144,9 @@ Versions
 |         |            | gives name along with " (!)"; fix clamav    |
 |         |            | plugin failing due to exiting with 1 when   |
 |         |            | already up-to-date                          |
++---------+------------+---------------------------------------------+
+| 2.0.3   | 2016-07-27 | Added ASCII art banner; improved logging in |
+|         |            | cask plugin                                 |
 +---------+------------+---------------------------------------------+
 
 Issues
