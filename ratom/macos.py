@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-"""update Mac OSX"""
+"""update macOS"""
 
-# File: ratom/macosx.py
-# Version: 2.0.3
-# Date: 2016-08-02
+# File: ratom/macos.py
+# Version: 2.0.4
+# Date: 2016-08-03
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -12,18 +12,18 @@
 from common import *
 
 def check():
-    """check if can update Mac OSX"""
+    """check if can update macOS"""
     return has('softwareupdate')
 
 def main(argv=None, cfg=None):
-    """update Mac OSX"""
+    """update macOS"""
     cfg = init(argv, cfg)
-    info('macosx: started')
+    info('macos: started')
     if not check():
-        info('macosx: failed check')
+        info('macos: failed check')
         return
-    section('Mac OSX', 'sudo softwareupdate -iav', dryrun=cfg['dryrun'])
-    info('macosx: finished')
+    section('macOS', 'sudo softwareupdate -iav', dryrun=cfg['dryrun'])
+    info('macos: finished')
 
 if __name__ == '__main__':
     main()

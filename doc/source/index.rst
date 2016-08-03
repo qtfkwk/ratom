@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.0.3-py2-none-any.whl
-    pip install ratom-2.0.3.zip
+    pip install ratom-2.0.4-py2-none-any.whl
+    pip install ratom-2.0.4.zip
 
 Usage
 -----
@@ -59,8 +59,8 @@ Usage
       -l PATH        Log to PATH; default: ~/.ratom/ratom.log
       --show-config  Show full configuration details
       plugin         Specific plugin(s) to run in the specified order; default:
-                     "macosx freebsd aptget yum clamav homebrew cask perlbrew
-                     cpanm pyenv pip rbenv gem npm msf git macosx_microsoft";
+                     "macos freebsd aptget yum clamav homebrew cask perlbrew
+                     cpanm pyenv pip rbenv gem npm msf git macos_microsoft";
                      ignored if running a plugin directly
 
 Examples
@@ -145,8 +145,12 @@ Versions
 |         |            | plugin failing due to exiting with 1 when   |
 |         |            | already up-to-date                          |
 +---------+------------+---------------------------------------------+
-| 2.0.3   | 2016-07-27 | Added ASCII art banner; improved logging in |
+| 2.0.3   | 2016-08-02 | Added ASCII art banner; improved logging in |
 |         |            | cask plugin                                 |
++---------+------------+---------------------------------------------+
+| 2.0.4   | 2016-08-03 | Renamed macosx to macos & macosx_microsoft  |
+|         |            | to macos_microsoft; increased verbosity of  |
+|         |            | cask plugin; added banner to usage (-h)     |
 +---------+------------+---------------------------------------------+
 
 Issues
@@ -298,19 +302,19 @@ before running the upgrade command.
 Note that this has initial success but should still be considered a
 work-in-progress.
 
-macosx
+macos
 ------
 
-Updates Mac OSX via the ``softwareupdate`` utility.
+Updates macOS via the ``softwareupdate`` utility.
 An update may require reboot and the output will indicate this; the
 rest of the update process will continue and it is the user's
 responsibility to perform the reboot.
 
-macosx_microsoft
+macos_microsoft
 ----------------
 
 Runs the GUI-based Microsoft AutoUpdate utility, which updates
-Microsoft software installed on a Mac OSX system.
+Microsoft software installed on a macOS system.
 Unfortunately, this appears to be the only way to confirm that the
 software is up-to-date, since searching for a command-line utility has
 so far been fruitless.
@@ -425,16 +429,16 @@ ratom.homebrew
 .. automodule:: ratom.homebrew
    :members:
 
-ratom.macosx
+ratom.macos
 ''''''''''''
 
-.. automodule:: ratom.macosx
+.. automodule:: ratom.macos
    :members:
 
-ratom.macosx_microsoft
+ratom.macos_microsoft
 ''''''''''''''''''''''
 
-.. automodule:: ratom.macosx_microsoft
+.. automodule:: ratom.macos_microsoft
    :members:
 
 ratom.msf

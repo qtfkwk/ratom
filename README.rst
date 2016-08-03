@@ -1,4 +1,4 @@
-* Supports Mac OSX, FreeBSD (freebsd-update, portsnap, pkg),
+* Supports macOS, FreeBSD (freebsd-update, portsnap, pkg),
   Debian and derivatives (apt-get), Red Hat and derivatives (yum),
   ClamAV/freshclam, Homebrew, Cask, Perlbrew, CPAN Minus (cpanm),
   pyenv, pip, rbenv, gem, npm, Metasploit Framework, Git repositories,

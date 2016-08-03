@@ -3,8 +3,8 @@
 """imports and runs all plugins"""
 
 # File: ratom/all.py
-# Version: 2.0.3
-# Date: 2016-08-02
+# Version: 2.0.4
+# Date: 2016-08-03
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -19,8 +19,8 @@ import freebsd
 import gem
 import git
 import homebrew
-import macosx
-import macosx_microsoft
+import macos
+import macos_microsoft
 import msf
 import npm
 import perlbrew
@@ -38,8 +38,8 @@ plugins = dict(
     gem=gem,
     git=git,
     homebrew=homebrew,
-    macosx=macosx,
-    macosx_microsoft=macosx_microsoft,
+    macos=macos,
+    macos_microsoft=macos_microsoft,
     msf=msf,
     npm=npm,
     perlbrew=perlbrew,

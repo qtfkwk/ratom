@@ -1,21 +1,21 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 2.0.3
-# Date: 2016-08-02
+# Version: 2.0.4
+# Date: 2016-08-03
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 # Variables
 
-__version__ = '2.0.3'
+__version__ = '2.0.4'
 directory = '~/.ratom'
 conf = directory + '/config.json'
 defaults = dict(
     log=directory + '/ratom.log',
     plugins=[
-        'macosx',
+        'macos',
         'freebsd',
         'aptget',
         'yum',
@@ -31,7 +31,7 @@ defaults = dict(
         'npm',
         'msf',
         'git',
-        'macosx_microsoft',
+        'macos_microsoft',
     ],
 )
 log = None
@@ -131,6 +131,11 @@ def info(msg):
     if log:
         log.info(msg)
 
+def write_cfg(cfg, c):
+    h = open(c, 'wb')
+    h.write(json_dumps(cfg) + '\n')
+    h.close()
+
 def init(argv=None, cfg=None):
     """process the arguments and configuration file, set up
     logging, and print the header
@@ -144,7 +149,9 @@ def init(argv=None, cfg=None):
         return cfg
 
     # process args
-    p = argparse.ArgumentParser()
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument('-h', '--help', action='store_true',
+        help='show this help message and exit')
     g = p.add_argument_group('ratom options')
     g.add_argument('-n', action='store_true',
         help='Dry run; don\'t actually update anything')
@@ -169,11 +176,21 @@ def init(argv=None, cfg=None):
         h = open(c, 'rb')
         cfg = json.load(h)
         h.close()
+
+        # updates config to convert macosx* plugins to macos*
+        def macosx_macos(x):
+            if x == 'macosx':
+                return 'macos'
+            elif x == 'macosx_microsoft':
+                return 'macos_microsoft'
+            else:
+                return x
+        cfg['plugins'] = map(macosx_macos, cfg['plugins'])
+        write_cfg(cfg, c)
+
     else:
         cfg = copy.deepcopy(defaults)
-        h = open(c, 'wb')
-        h.write(json_dumps(cfg) + '\n')
-        h.close()
+        write_cfg(cfg, c)
     r = copy.deepcopy(cfg)
 
     # args override config file
@@ -205,6 +222,13 @@ def init(argv=None, cfg=None):
 
     # print the header
     header(r, c, cfg, a.show_config)
+
+    # show usage
+    if a.help:
+        section_begin('Usage')
+        p.print_help()
+        section_end()
+        sys.exit(0)
 
     return r
 
@@ -281,10 +305,14 @@ def runp(c, prompt='$ ', dryrun=False, shell=False, check=False, verbose=False):
         else:
             p = subprocess.Popen(shlex.split(c), stdout=pipe, stderr=pipe)
         (out, err) = p.communicate()
+        out = out.strip()
+        err = err.strip()
         r = p.wait()
         if verbose:
-            print err
-            print out
+            if err: print err
+            if out: print out
+            if err or out:
+                print
         if r != 0 and not check:
             e = 'Intermediate command "%s" exited with %d!' % (c, r)
             error(e)
