@@ -1,7 +1,7 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 2.0.5
+# Version: 2.0.6
 # Date: 2016-08-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
@@ -9,7 +9,7 @@
 
 # Variables
 
-__version__ = '2.0.5'
+__version__ = '2.0.6'
 directory = '~/.ratom'
 conf = directory + '/config.json'
 defaults = dict(
@@ -98,9 +98,8 @@ def header(r, c, cfg, show_config=False):
     * ``cfg``: configuration dictionary from the configuration file
     * ``show_config``: shows full configuration details if true
     """
-    print t.bold_green('# Rage Against The Outdated Machine, v' + __version__) \
-        + '\n'
-    print '```' + t.bold("""
+    print t.bold_green('# Rage Against The Outdated Machine, v' + __version__)
+    print '\n```' + t.bold("""
                               s
                              :8
    .u    .         u        .88           u.      ..    .     :
@@ -115,6 +114,11 @@ def header(r, c, cfg, show_config=False):
     print kron.timestamp().str(fmt='national') + '\n'
     if r['dryrun']:
         print t.bold_on_red('**THIS IS A DRY RUN!**') + '\n'
+    section_begin('Contact', backticks=False)
+    print '* [Github](https://github.com/qtfkwk/ratom)'
+    print '* [PyPI](https://pypi.python.org/pypi/ratom)'
+    print '* [Documentation](http://pythonhosted.org/ratom)'
+    print
     if show_config:
         section_begin('Configuration', backticks=False)
         section_begin('Command', backticks=False, prefix='###')

@@ -1,7 +1,7 @@
 """Rage Against The Outdated Machine"""
 
 # File: ratom/__init__.py
-# Version: 2.0.5
+# Version: 2.0.6
 # Date: 2016-08-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
