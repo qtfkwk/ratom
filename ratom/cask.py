@@ -3,8 +3,8 @@
 """update Cask packages"""
 
 # File: ratom/cask.py
-# Version: 2.0.4
-# Date: 2016-08-03
+# Version: 2.0.5
+# Date: 2016-08-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -49,7 +49,7 @@ def main(argv=None, cfg=None):
     section_end()
     if len(updates) > 0:
         print t.bold('The following casks have updates: %s.' % \
-            join(', ', updates)) + '\n'
+            ', '.join(updates)) + '\n'
         section_begin('Update')
         for cask in updates:
             run('brew cask install %s' % cask, dryrun=cfg['dryrun'])

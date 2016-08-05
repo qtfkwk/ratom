@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.0.4-py2-none-any.whl
-    pip install ratom-2.0.4.zip
+    pip install ratom-2.0.5-py2-none-any.whl
+    pip install ratom-2.0.5.zip
 
 Usage
 -----
@@ -151,6 +151,8 @@ Versions
 | 2.0.4   | 2016-08-03 | Renamed macosx to macos & macosx_microsoft  |
 |         |            | to macos_microsoft; increased verbosity of  |
 |         |            | cask plugin; added banner to usage (-h)     |
++---------+------------+---------------------------------------------+
+| 2.0.5   | 2016-08-05 | Fix join error in cask plugin               |
 +---------+------------+---------------------------------------------+
 
 Issues
