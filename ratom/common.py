@@ -1,15 +1,15 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 2.0.7
-# Date: 2016-09-22
+# Version: 2.0.8
+# Date: 2016-11-30
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 # Variables
 
-__version__ = '2.0.7'
+__version__ = '2.0.8'
 directory = '~/.ratom'
 conf = directory + '/config.json'
 defaults = dict(

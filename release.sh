@@ -1,8 +1,8 @@
 #!/bin/sh -x
 
 # File: release.sh
-# Version: 2.0.7
-# Date: 2016-09-22
+# Version: 2.0.8
+# Date: 2016-11-30
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -20,9 +20,11 @@ grep \|\ $v_ doc/source/index.rst
 git clean -dxf
 
 # build and upload doc
-./setup.py update doc
-./setup.py upload_sphinx
-
+./setup.py update
+#./setup.py doc upload_sphinx
+# PyPI's pythonhosted documentation site appears to be deprecated; Error:
+# "Upload failed (410): Uploading documentation is no longer supported, we
+# recommend using https://readthedocs.org/."
 git clean -dxf
 
 # github

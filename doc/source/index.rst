@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.0.7-py2-none-any.whl
-    pip install ratom-2.0.7.zip
+    pip install ratom-2.0.8-py2-none-any.whl
+    pip install ratom-2.0.8.zip
 
 Usage
 -----
@@ -158,6 +158,11 @@ Versions
 +---------+------------+---------------------------------------------+
 | 2.0.7   | 2016-09-22 | Use `--verbose` instead of `-v` with macos  |
 |         |            | plugin `softwareupdate`                     |
++---------+------------+---------------------------------------------+
+| 2.0.8   | 2016-11-30 | Added `--format=legacy` to `pip list`       |
+|         |            | command in pip plugin; disable uploading    |
+|         |            | documentation to pythonhosted site (will    |
+|         |            | transition to readthedocs)                  |
 +---------+------------+---------------------------------------------+
 
 Issues
