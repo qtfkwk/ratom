@@ -3,8 +3,8 @@
 """update Homebrew packages"""
 
 # File: ratom/homebrew.py
-# Version: 2.0.8
-# Date: 2016-11-30
+# Version: 2.0.9
+# Date: 2016-12-08
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -40,10 +40,10 @@ def main(argv=None, cfg=None):
     run('brew update', dryrun=d)
     if has('pyenv'):
         pyenv_version = _pyenv('system', d)
-        run('pyenv exec brew upgrade --all', dryrun=d, shell=True)
+        run('pyenv exec brew upgrade', dryrun=d, shell=True)
         _pyenv(pyenv_version, d)
     else:
-        run('brew upgrade --all', dryrun=d, shell=True)
+        run('brew upgrade', dryrun=d, shell=True)
     run('brew cleanup', dryrun=d)
     section_end()
     info('homebrew: finished')

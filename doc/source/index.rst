@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.0.8-py2-none-any.whl
-    pip install ratom-2.0.8.zip
+    pip install ratom-2.0.9-py2-none-any.whl
+    pip install ratom-2.0.9.zip
 
 Usage
 -----
@@ -59,9 +59,9 @@ Usage
       -l PATH        Log to PATH; default: ~/.ratom/ratom.log
       --show-config  Show full configuration details
       plugin         Specific plugin(s) to run in the specified order; default:
-                     "macos freebsd aptget yum clamav homebrew cask perlbrew
-                     cpanm pyenv pip rbenv gem npm msf git macos_microsoft";
-                     ignored if running a plugin directly
+                     "macos freebsd aptget yum clamav homebrew perlbrew cpanm
+                     pyenv pip rbenv gem npm msf git macos_microsoft"; ignored if
+                     running a plugin directly
 
 Examples
 --------
@@ -164,6 +164,10 @@ Versions
 |         |            | documentation to pythonhosted site (will    |
 |         |            | transition to readthedocs)                  |
 +---------+------------+---------------------------------------------+
+| 2.0.9   | 2016-12-08 | Removed cask plugin; remove the `--all`     |
+|         |            | option from the `brew upgrade` command; fix |
+|         |            | the npm plugin; minor fixes to output       |
++---------+------------+---------------------------------------------+
 
 Issues
 ------
@@ -187,7 +191,6 @@ To do
 * update Perl modules via CPANM for all perlbrew perls?
 * update Python modules via pip for all pyenv pythons?
 * update Ruby gems for all rbenv rubys?
-
 
 Plugins
 =======
@@ -241,16 +244,6 @@ aptget
 Updates Debian or Debian-based system (Ubuntu, Kali...) via
 ``apt-get update``, ``apt-get dist-upgrade -y``, then removes
 unnecessary packages via ``apt-get autoremove -y``.
-
-cask
-----
-
-Updates Homebrew casks by running ``brew cask info`` for each
-installed cask package as an intermediate command to determine whether
-there is an update available.
-If so, it runs ``brew cask install`` to install the updated cask.
-Finally, ``brew cask cleanup`` is run to remove temporary files and
-perform general maintainance tasks.
 
 clamav
 ------
@@ -397,12 +390,6 @@ ratom.aptget
 ''''''''''''
 
 .. automodule:: ratom.aptget
-   :members:
-
-ratom.cask
-''''''''''
-
-.. automodule:: ratom.cask
    :members:
 
 ratom.clamav

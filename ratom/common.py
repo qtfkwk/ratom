@@ -1,15 +1,15 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 2.0.8
-# Date: 2016-11-30
+# Version: 2.0.9
+# Date: 2016-12-08
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 # Variables
 
-__version__ = '2.0.8'
+__version__ = '2.0.9'
 directory = '~/.ratom'
 conf = directory + '/config.json'
 defaults = dict(
@@ -21,7 +21,6 @@ defaults = dict(
         'yum',
         'clamav',
         'homebrew',
-        'cask',
         'perlbrew',
         'cpanm',
         'pyenv',
@@ -98,8 +97,8 @@ def header(r, c, cfg, show_config=False):
     * ``cfg``: configuration dictionary from the configuration file
     * ``show_config``: shows full configuration details if true
     """
-    print t.bold_green('# Rage Against The Outdated Machine, v' + __version__)
-    print '\n```' + t.bold("""
+    sys.stdout.write(t.bold_green('# Rage Against The Outdated Machine, v%s' % __version__))
+    sys.stdout.write('\n\n```' + t.bold("""
                               s
                              :8
    .u    .         u        .88           u.      ..    .     :
@@ -110,24 +109,23 @@ def header(r, c, cfg, show_config=False):
   4888>      9888  9888    8888     888R I888>   X888  888X '888>
  .d888L .+   9888  9888   .8888Lu= u8888cJ888    X888  888X '888>
  ^"8888*"    "888*""888"  ^%888*    "*888*P"    "*88%""*88" '888!`
-    "Y"       ^Y"   ^Y'     'Y"       'Y"         `~    "    `"`""") + '\n```\n'
-    print kron.timestamp().str(fmt='national') + '\n'
+    "Y"       ^Y"   ^Y'     'Y"       'Y"         `~    "    `"`""") + '\n```\n\n')
+    sys.stdout.write('%s\n\n' % kron.timestamp().str(fmt='national'))
     if r['dryrun']:
-        print t.bold_on_red('**THIS IS A DRY RUN!**') + '\n'
+        sys.stdout.write(t.bold_on_red('**THIS IS A DRY RUN!**') + '\n\n')
     section_begin('Contact', backticks=False)
-    print '* [Github](https://github.com/qtfkwk/ratom)'
-    print '* [PyPI](https://pypi.python.org/pypi/ratom)'
-    print '* [Documentation](http://pythonhosted.org/ratom)'
-    print
+    sys.stdout.write('* [Github](https://github.com/qtfkwk/ratom)\n')
+    sys.stdout.write('* [PyPI](https://pypi.python.org/pypi/ratom)\n')
+    sys.stdout.write('* [Documentation](http://pythonhosted.org/ratom)\n\n')
     if show_config:
         section_begin('Configuration', backticks=False)
         section_begin('Command', backticks=False, prefix='###')
-        print '``%s``\n' % ' '.join(sys.argv)
+        sys.stdout.write('``%s``\n\n' % ' '.join(sys.argv))
         section_begin('File', backticks=False, prefix='###')
-        print '``' + c + '``\n'
-        print '```\n' + json_dumps(cfg) + '```\n'
+        sys.stdout.write('``' + c + '``\n\n')
+        sys.stdout.write('```\n' + json_dumps(cfg) + '```\n\n')
         section_begin('Running', prefix='###')
-        print json_dumps(r).strip('\n')
+        sys.stdout.write(json_dumps(r).strip('\n') + '\n')
         section_end()
 
 def info(msg):
@@ -251,16 +249,20 @@ def run(c, prompt='$ ', dryrun=False, shell=False, good=0):
     * ``shell``: passed to ``run_``
     * ``good``: allowed exit codes; single integer or list of integers
     """
+    r = []
     if not isinstance(c, list):
         c = [c]
     for i in c:
         info('running `%s`' % i)
         if dryrun:
-            print t.bold_red(prompt + i)
+            sys.stdout.write('\n%s\n' % t.bold_red(prompt + i))
         else:
-            print t.bold(prompt + i)
-            run_(i, shell, good)
-            print
+            sys.stdout.write('\n%s\n' % t.bold(prompt + i))
+            r.append(run_(i, shell, good))
+    if len(r) == 1:
+        return r[0]
+    else:
+        return r
 
 def run_(c, shell=False, good=0):
     """just run a command
@@ -275,8 +277,8 @@ def run_(c, shell=False, good=0):
     else:
         p = subprocess.Popen(shlex.split(c))
     r = p.wait()
-    if not isinstance(good, list):
-        good = [good]
+    if not isinstance(good, (list, tuple)):
+        good = tuple([good])
     if not r in good:
         e = 'Command "%s" exited with %d!' % (c, r)
         error(e)
@@ -297,9 +299,9 @@ def runp(c, prompt='$ ', dryrun=False, shell=False, check=False, verbose=False):
     """
     if verbose:
         if dryrun:
-            print t.bold_red(prompt + c)
+            sys.stdout.write(t.bold_red(prompt + c) + '\n')
         else:
-            print t.bold(prompt + c)
+            sys.stdout.write(t.bold(prompt + c) + '\n')
     info('running `%s`' % c)
     pipe = subprocess.PIPE
     r, out, err = 0, '', ''
@@ -313,10 +315,8 @@ def runp(c, prompt='$ ', dryrun=False, shell=False, check=False, verbose=False):
         err = err.strip()
         r = p.wait()
         if verbose:
-            if err: print err
-            if out: print out
-            if err or out:
-                print
+            if err: sys.stdout.write(err + '\n\n')
+            if out: sys.stdout.write(out + '\n\n')
         if r != 0 and not check:
             e = 'Intermediate command "%s" exited with %d!' % (c, r)
             error(e)
@@ -343,15 +343,15 @@ def section_begin(m, a='', backticks=True, prefix='##'):
     * ``backticks``: prints backticks for beginning a code block
     * ``prefix``: override the default header prefix
     """
-    print t.bold_yellow(prefix + ' ' + m) + '\n'
+    sys.stdout.write(t.bold_yellow(prefix + ' ' + m) + '\n\n')
     if a != '':
-        print a.strip('\n') + '\n'
+        sys.stdout.write(a.strip('\n') + '\n\n')
     if backticks:
-        print '```'
+        sys.stdout.write('```')
 
 def section_end():
     """end a section in the standard way"""
-    print '```\n'
+    sys.stdout.write('```\n\n')
 
 # Classes
 
