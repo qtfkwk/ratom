@@ -9,7 +9,7 @@
 
 # Variables
 
-__version__ = '2.0.9'
+__version__ = '2.0.10'
 directory = '~/.ratom'
 conf = directory + '/config.json'
 defaults = dict(

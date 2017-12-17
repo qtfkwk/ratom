@@ -56,12 +56,12 @@ if __name__ == '__main__':
         doc = 'doc/source/index.rst'
         conf = 'doc/source/conf.py'
         c = [
-            r"sed -i _ 's/^__version__ = '\''%s'\''/" % vre + \
+            r"sed -Ei _ 's/^__version__ = '\''%s'\''/" % vre + \
                 r"__version__ = '\''%s'\''/' ratom/common.py" % v,
             r"sed -i _ 's/^# Date: .*$/# Date: %s/' %s" % (today, files),
             r"sed -i _ 's/^# Version: .*$/# Version: %s/' %s" % (v, files),
             r"sed -i _ 's/ratom-[0-9]*\.[0-9]*\.[0-9]*/ratom-%s/' %s" % (v, doc),
-            r"sed -i _ 's/%s/%s/' %s" % (vre, v, conf),
+            r"sed -Ei _ 's/%s/%s/' %s" % (vre, v, conf),
             r"rm -f ratom/*.py_ setup.py_ *.sh_ %s_ %s_" % (doc, conf),
         ]
         for i in c:
