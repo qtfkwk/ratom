@@ -11,6 +11,8 @@
 
 from common import *
 
+import re
+
 def check():
     """check if can check for new Python versions in pyenv"""
     return has('pyenv')
@@ -23,10 +25,12 @@ def main(argv=None, cfg=None):
         info('pyenv: failed check')
         return
     available = [x.strip() for x in runp('pyenv install -l')[1].split('\n')]
-    latest = {x: None for x in ['2.7', '3.5']}
+    latest = {x: None for x in ['2', '3']}
     for i in latest:
         l = len(i)
         for j in available:
+            if re.search('[^\d\.]', j): # remove named, dev, a, rc versions
+                continue
             if j[:l] == i:
                 latest[i] = j.strip().strip('\n')
     section_begin('Pyenv', 'Latest: %s\n' % ', '.join(sorted(latest.values())))
