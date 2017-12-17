@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.0.10-py2-none-any.whl
-    pip install ratom-2.0.10.zip
+    pip install ratom-2.0.11-py2-none-any.whl
+    pip install ratom-2.0.11.zip
 
 Usage
 -----
@@ -172,6 +172,9 @@ Versions
 |         |            | outdated command; fix pyenv plugin to       |
 |         |            | properly show the latest stable 2.x and 3.x |
 |         |            | versions of Python; other minor fixes       |
++---------+------------+---------------------------------------------+
+| 2.0.11  | 2017-12-17 | Fix bug in build system preventing the      |
+|         |            | banner version from being updated           |
 +---------+------------+---------------------------------------------+
 
 Issues
