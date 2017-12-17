@@ -23,9 +23,10 @@ def main(argv=None, cfg=None):
         info('npm: failed check')
         return
     section_begin('NPM')
-    if run('npm outdated -g', dryrun=cfg['dryrun'], good=(0, 1)) in (0, []):
-        run('npm update -g', dryrun=cfg['dryrun'])
-        run('npm outdated -g', dryrun=cfg['dryrun'], good=1)
+    #if run('npm outdated -g', dryrun=cfg['dryrun'], good=(0, 1)) in (0, []):
+    #    run('npm update -g', dryrun=cfg['dryrun'])
+    #    run('npm outdated -g', dryrun=cfg['dryrun'], good=1)
+    run('npm update -g', dryrun=cfg['dryrun'])
     section_end()
     info('npm: finished')
 
