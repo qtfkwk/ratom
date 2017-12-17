@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.0.9-py2-none-any.whl
-    pip install ratom-2.0.9.zip
+    pip install ratom-2.0.10-py2-none-any.whl
+    pip install ratom-2.0.10.zip
 
 Usage
 -----
@@ -167,6 +167,11 @@ Versions
 | 2.0.9   | 2016-12-08 | Removed cask plugin; remove the `--all`     |
 |         |            | option from the `brew upgrade` command; fix |
 |         |            | the npm plugin; minor fixes to output       |
++---------+------------+---------------------------------------------+
+| 2.0.10  | 2017-12-17 | Fix the npm plugin to avoid "broken"        |
+|         |            | outdated command; fix pyenv plugin to       |
+|         |            | properly show the latest stable 2.x and 3.x |
+|         |            | versions of Python; other minor fixes       |
 +---------+------------+---------------------------------------------+
 
 Issues
