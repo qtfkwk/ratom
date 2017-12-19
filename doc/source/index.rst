@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.0.11-py2-none-any.whl
-    pip install ratom-2.0.11.zip
+    pip install ratom-2.0.12-py2-none-any.whl
+    pip install ratom-2.0.12.zip
 
 Usage
 -----
@@ -175,6 +175,9 @@ Versions
 +---------+------------+---------------------------------------------+
 | 2.0.11  | 2017-12-17 | Fix bug in build system preventing the      |
 |         |            | banner version from being updated           |
++---------+------------+---------------------------------------------+
+| 2.0.12  | 2017-12-18 | Fix the rbenv plugin to properly show the   |
+|         |            | latest stable 2.x version of Ruby           |
 +---------+------------+---------------------------------------------+
 
 Issues
