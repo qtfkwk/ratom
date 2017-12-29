@@ -3,8 +3,8 @@
 """imports and runs all plugins"""
 
 # File: ratom/all.py
-# Version: 2.0.12
-# Date: 2017-12-18
+# Version: 2.1.0
+# Date: 2017-12-29
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
@@ -13,6 +13,7 @@ from common import *
 
 import aptget
 import clamav
+import conda
 import cpanm
 import freebsd
 import gem
@@ -31,6 +32,7 @@ import yum
 plugins = dict(
     aptget=aptget,
     clamav=clamav,
+    conda=conda,
     cpanm=cpanm,
     freebsd=freebsd,
     gem=gem,
