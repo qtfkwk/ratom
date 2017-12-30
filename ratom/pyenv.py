@@ -3,7 +3,7 @@
 """check for new Python versions in pyenv"""
 
 # File: ratom/pyenv.py
-# Version: 2.1.1
+# Version: 2.1.2
 # Date: 2017-12-30
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk

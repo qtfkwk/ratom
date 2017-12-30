@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.1.1-py2-none-any.whl
-    pip install ratom-2.1.1.zip
+    pip install ratom-2.1.2-py2-none-any.whl
+    pip install ratom-2.1.2.zip
 
 Usage
 -----
@@ -185,6 +185,10 @@ Versions
 |         |            | installed as dependencies and allows        |
 |         |            | ignoring packages in the config file; fix   |
 |         |            | --show-config output                        |
++---------+------------+---------------------------------------------+
+| 2.1.2   | 2017-12-30 | Fix error "Upload failed (400): Only one    |
+|         |            | sdist may be uploaded per release" in       |
+|         |            | favor of zip versus tar.gz                  |
 +---------+------------+---------------------------------------------+
 
 Issues
