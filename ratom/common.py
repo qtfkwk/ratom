@@ -125,12 +125,12 @@ def header(r, c, cfg, show_config=False):
     if show_config:
         section_begin('Configuration', backticks=False)
         section_begin('Command', backticks=False, prefix='###')
-        sys.stdout.write('``%s``\n\n' % ' '.join(sys.argv))
+        sys.stdout.write('`%s`\n\n' % ' '.join(sys.argv))
         section_begin('File', backticks=False, prefix='###')
-        sys.stdout.write('``' + c + '``\n\n')
+        sys.stdout.write('`' + c + '`\n\n')
         sys.stdout.write('```\n' + json_dumps(cfg) + '```\n\n')
         section_begin('Running', prefix='###')
-        sys.stdout.write(json_dumps(r).strip('\n') + '\n')
+        sys.stdout.write('\n' + json_dumps(r).strip('\n') + '\n')
         section_end()
 
 def info(msg):
