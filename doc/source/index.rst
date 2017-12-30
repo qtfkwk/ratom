@@ -190,6 +190,8 @@ Versions
 |         |            | sdist may be uploaded per release" in       |
 |         |            | favor of zip versus tar.gz                  |
 +---------+------------+---------------------------------------------+
+| 2.1.3   | 2017-12-30 | Fix conda and pip plugins output            |
++---------+------------+---------------------------------------------+
 
 Issues
 ------

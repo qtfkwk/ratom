@@ -24,6 +24,7 @@ def main(argv=None, cfg=None):
         return
     section_begin('Anaconda packages')
     run('conda update --all', dryrun=cfg['dryrun'])
+    section_end()
     info('conda: finished')
 
 if __name__ == '__main__':

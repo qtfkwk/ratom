@@ -354,9 +354,11 @@ def section_begin(m, a='', backticks=True, prefix='##'):
     if backticks:
         sys.stdout.write('```')
 
-def section_end():
+def section_end(backticks=True):
     """end a section in the standard way"""
-    sys.stdout.write('```\n\n')
+    if backticks:
+        sys.stdout.write('```')
+    sys.stdout.write('\n\n')
 
 # Classes
 
