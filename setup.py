@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # File: setup.py
-# Version: 2.1.2
+# Version: 2.1.3
 # Date: 2017-12-30
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
