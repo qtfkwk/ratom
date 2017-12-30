@@ -33,6 +33,10 @@ defaults = dict(
         'git',
         'macos_microsoft',
     ],
+    pip_ignore=[
+        'spyder',
+        'pyqt5',
+    ],
 )
 log = None
 

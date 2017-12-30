@@ -181,6 +181,10 @@ Versions
 +---------+------------+---------------------------------------------+
 | 2.1.0   | 2017-12-29 | Add conda plugin                            |
 +---------+------------+---------------------------------------------+
+| 2.1.1   | 2017-12-30 | pip plugin only upgrades packages not       |
+|         |            | installed as dependencies and allows        |
+|         |            | ignoring packages in the config file        |
++---------+------------+---------------------------------------------+
 
 Issues
 ------
