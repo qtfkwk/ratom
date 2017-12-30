@@ -1,3 +1,4 @@
 *.swp
 *.pyc
 dist/
+doc/ratom-doc-html/

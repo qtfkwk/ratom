@@ -20,8 +20,8 @@ grep \|\ $v_ doc/source/index.rst
 git clean -dxf
 
 # build and upload doc
-./setup.py update
-#./setup.py doc upload_sphinx
+./setup.py update doc
+#./setup.py upload_sphinx
 # PyPI's pythonhosted documentation site appears to be deprecated; Error:
 # "Upload failed (410): Uploading documentation is no longer supported, we
 # recommend using https://readthedocs.org/."
