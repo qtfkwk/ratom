@@ -9,4 +9,5 @@
 
 cd $(dirname $0)
 ./setup.py update doc bdist_wheel sdist
+./setup.py sdist --formats=zip
 

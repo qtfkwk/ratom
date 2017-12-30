@@ -35,6 +35,7 @@ git tag -a $v -m release\ $v
 git push origin --tags
 
 # pypi
-./setup.py sdist --formats=zip upload
 ./setup.py bdist_wheel upload
+./setup.py sdist upload
+./setup.py sdist --formats=zip upload
 
