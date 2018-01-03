@@ -23,7 +23,8 @@ def main(argv=None, cfg=None):
         info('conda: failed check')
         return
     section_begin('Anaconda packages')
-    run('conda update --all', dryrun=cfg['dryrun'])
+    run('conda update -yn base conda', dryrun=cfg['dryrun'])
+    run('conda update -y --all', dryrun=cfg['dryrun'])
     section_end()
     info('conda: finished')
 
