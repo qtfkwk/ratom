@@ -196,6 +196,8 @@ Versions
 +---------+------------+---------------------------------------------+
 | 2.1.5   | 2018-01-02 | Add conda self updating and don't confirm   |
 +---------+------------+---------------------------------------------+
+| 2.2.0   | 2018-01-04 | Add geoip plugin                            |
++---------+------------+---------------------------------------------+
 
 Issues
 ------
@@ -308,6 +310,12 @@ gem
 Runs ``gem update`` to update globally-installed gems for the
 "current" selected Ruby, without regard for or knowledge of things
 like rbenv.
+
+geoip
+-----
+
+Runs ``geoipupdate -v`` to update the GeoIP database according to the
+configuration.
 
 git
 ---
@@ -442,6 +450,12 @@ ratom.gem
 '''''''''
 
 .. automodule:: ratom.gem
+   :members:
+
+ratom.geoip
+'''''''''''
+
+.. automodule:: ratom.geoip
    :members:
 
 ratom.git

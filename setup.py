@@ -9,7 +9,7 @@
 
 import setuptools
 
-v = '2.1.5'
+v = '2.2.0'
 
 cfg = dict(
     name='ratom',
