@@ -59,9 +59,9 @@ Usage
       -l PATH        Log to PATH; default: ~/.ratom/ratom.log
       --show-config  Show full configuration details
       plugin         Specific plugin(s) to run in the specified order; default:
-                     "macos freebsd aptget yum clamav homebrew perlbrew cpanm
-                     pyenv pip rbenv gem npm msf git macos_microsoft"; ignored if
-                     running a plugin directly
+                     "macos freebsd aptget yum clamav geoip homebrew perlbrew
+                     cpanm pyenv conda pip rbenv gem npm msf git macos_microsoft";
+                     ignored if running a plugin directly
 
 Examples
 --------
@@ -203,7 +203,8 @@ Versions
 | 2.2.2   | 2018-01-05 | Fix pyenv plugin to show latest anaconda    |
 |         |            | versions                                    |
 +---------+------------+---------------------------------------------+
-| 2.2.3   | 2018-01-05 | Fix cpanm plugin output                     |
+| 2.2.3   | 2018-01-05 | Fix cpanm plugin output; update usage in    |
+|         |            | doc                                         |
 +---------+------------+---------------------------------------------+
 
 Issues
