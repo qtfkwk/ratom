@@ -25,7 +25,7 @@ def main(argv=None, cfg=None):
         info('cpanm: failed check')
         return
     section_begin('Perl modules')
-    print t.bold('$ cpan-outdated -p')
+    print '\n' + t.bold('$ cpan-outdated -p')
     modules = filter(lambda x: x != '', runp('cpan-outdated -p')[1].split('\n'))
     if len(modules) > 0:
         for module in modules:
