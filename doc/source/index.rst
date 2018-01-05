@@ -196,7 +196,7 @@ Versions
 +---------+------------+---------------------------------------------+
 | 2.1.5   | 2018-01-02 | Add conda self updating and don't confirm   |
 +---------+------------+---------------------------------------------+
-| 2.2.0   | 2018-01-04 | Add geoip plugin                            |
+| 2.2.0   | 2018-01-04 | Add geoip plugin; fix conda in doc          |
 +---------+------------+---------------------------------------------+
 
 Issues
@@ -283,6 +283,12 @@ This is in contrast to using the ``freshclamd`` daemon which can
 likely do a better job of keeping the signatures up-to-date.
 However, running freshclam manually confirms that the signatures are
 up-to-date whether the system uses the daemon or not.
+
+conda
+-----
+
+Updates conda and Anaconda packages via
+``conda update -yn base conda`` and ``conda update -y --all``.
 
 cpanm
 -----
@@ -432,6 +438,12 @@ ratom.clamav
 ''''''''''''
 
 .. automodule:: ratom.clamav
+   :members:
+
+ratom.conda
+'''''''''''
+
+.. automodule:: ratom.conda
    :members:
 
 ratom.cpanm
