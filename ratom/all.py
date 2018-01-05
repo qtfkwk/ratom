@@ -17,6 +17,7 @@ import conda
 import cpanm
 import freebsd
 import gem
+import geoip
 import git
 import homebrew
 import macos
@@ -36,6 +37,7 @@ plugins = dict(
     cpanm=cpanm,
     freebsd=freebsd,
     gem=gem,
+    geoip=geoip,
     git=git,
     homebrew=homebrew,
     macos=macos,

@@ -20,6 +20,7 @@ defaults = dict(
         'aptget',
         'yum',
         'clamav',
+        'geoip',
         'homebrew',
         'perlbrew',
         'cpanm',
