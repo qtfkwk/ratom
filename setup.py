@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # File: setup.py
-# Version: 2.2.2
+# Version: 2.2.3
 # Date: 2018-01-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
@@ -9,7 +9,7 @@
 
 import setuptools
 
-v = '2.2.2'
+v = '2.2.3'
 
 cfg = dict(
     name='ratom',
