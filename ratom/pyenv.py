@@ -25,11 +25,12 @@ def main(argv=None, cfg=None):
         info('pyenv: failed check')
         return
     available = [x.strip() for x in runp('pyenv install -l')[1].split('\n')]
-    latest = {x: None for x in ['2', '3']}
+    latest = {x: None for x in ['2', '3', 'anaconda2', 'anaconda3']}
     for i in latest:
         l = len(i)
+        num = i in ('2', '3')
         for j in available:
-            if re.search('[^\d\.]', j): # remove named, dev, a, rc versions
+            if num and re.search('[^\d\.]', j): # remove dev versions
                 continue
             if j[:l] == i:
                 latest[i] = j.strip().strip('\n')
