@@ -3,7 +3,7 @@
 """imports and runs all plugins"""
 
 # File: ratom/all.py
-# Version: 2.2.1
+# Version: 2.2.2
 # Date: 2018-01-05
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
