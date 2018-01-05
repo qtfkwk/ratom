@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.1.5-py2-none-any.whl
-    pip install ratom-2.1.5.zip
+    pip install ratom-2.2.0-py2-none-any.whl
+    pip install ratom-2.2.0.zip
 
 Usage
 -----
