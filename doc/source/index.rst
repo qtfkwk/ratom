@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.2.3-py2-none-any.whl
-    pip install ratom-2.2.3.zip
+    pip install ratom-2.2.4-py2-none-any.whl
+    pip install ratom-2.2.4.zip
 
 Usage
 -----
@@ -205,6 +205,8 @@ Versions
 +---------+------------+---------------------------------------------+
 | 2.2.3   | 2018-01-05 | Fix cpanm plugin output; update usage in    |
 |         |            | doc                                         |
++---------+------------+---------------------------------------------+
+| 2.2.4   | 2018-01-22 | Remove extraneous newline in pip plugin     |
 +---------+------------+---------------------------------------------+
 
 Issues
