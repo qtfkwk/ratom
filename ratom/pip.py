@@ -27,7 +27,7 @@ def main(argv=None, cfg=None):
     packages = [package['name'] for package in json.loads(runp(c)[1])]
     packages = filter(lambda x: not x in cfg['pip_ignore'], packages)
     if len(packages) > 0:
-        sys.stdout.write('```\n')
+        sys.stdout.write('```')
         for package in packages:
             run('pip install --upgrade %s' % package, dryrun=cfg['dryrun'])
         sys.stdout.write('```')
