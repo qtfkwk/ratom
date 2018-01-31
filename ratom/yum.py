@@ -3,7 +3,7 @@
 """update Red Hat via yum"""
 
 # File: ratom/yum.py
-# Version: 2.2.4
+# Version: 2.2.5
 # Date: 2018-01-31
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk

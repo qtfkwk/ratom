@@ -38,8 +38,8 @@ Installation
 Can also install from either the binary distribution (or "wheel") or
 source distribution files::
 
-    pip install ratom-2.2.4-py2-none-any.whl
-    pip install ratom-2.2.4.zip
+    pip install ratom-2.2.5-py2-none-any.whl
+    pip install ratom-2.2.5.zip
 
 Usage
 -----
@@ -100,6 +100,8 @@ RATOM can be used in a few ways...
 Versions
 --------
 
+* 2.2.5 (2018-01-31): Convert releases table in documentation; UTC
+  date in update hook
 * 2.2.4 (2018-01-22): Remove extraneous newline in pip plugin
 * 2.2.3 (2018-01-05): Fix cpanm plugin output; update usage in doc
 * 2.2.2 (2018-01-05): Fix pyenv plugin to show latest anaconda
