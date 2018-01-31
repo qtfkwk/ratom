@@ -50,7 +50,7 @@ if __name__ == '__main__':
     a = sys.argv[1:]
     if 'update' in a:
         import datetime
-        today = datetime.datetime.now().strftime('%Y-%m-%d')
+        today = datetime.datetime.utcnow().strftime('%Y-%m-%d')
         vre = r'[0-9]*\.[0-9]*\.[0-9]+'
         files = 'ratom/*.py setup.py *.sh'
         doc = 'doc/source/index.rst'
