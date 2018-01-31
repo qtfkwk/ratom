@@ -15,7 +15,7 @@ v=$(grep '^v = ' setup.py |cut -d\' -f2)
 v_=$(echo $v |sed 's/\./\\./g')
 
 # ensure entry in versions table
-grep \|\ $v_ doc/source/index.rst
+grep \*\ $v_ doc/source/index.rst
 
 git clean -dxf
 

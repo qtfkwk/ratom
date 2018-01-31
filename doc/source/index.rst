@@ -100,114 +100,65 @@ RATOM can be used in a few ways...
 Versions
 --------
 
-+---------+------------+---------------------------------------------+
-| Version | Date       | Comments                                    |
-+=========+============+=============================================+
-| 1.0.0   | 2016-05-25 | Initial release                             |
-+---------+------------+---------------------------------------------+
-| 1.0.1   | 2016-05-25 | Fixed release script, rearranged            |
-|         |            | documentation                               |
-+---------+------------+---------------------------------------------+
-| 1.0.2   | 2016-05-25 | More work on release script and             |
-|         |            | documentation                               |
-+---------+------------+---------------------------------------------+
-| 1.0.3   | 2016-05-25 | Improved release automation                 |
-+---------+------------+---------------------------------------------+
-| 1.0.4   | 2016-05-26 | Documentation: moved content from readme,   |
-|         |            | fixed typo, renamed apple plugin to macosx; |
-|         |            | Code: run brew upgrade via shell, log       |
-|         |            | exceptions as errors, log command           |
-+---------+------------+---------------------------------------------+
-| 1.0.5   | 2016-05-26 | Pipe stderr in runp, aptget and yum plugins |
-+---------+------------+---------------------------------------------+
-| 1.0.6   | 2016-05-26 | Add aptget and yum plugins to documentation |
-+---------+------------+---------------------------------------------+
-| 1.0.7   | 2016-05-26 | Added descriptions of aptget and yum        |
-|         |            | plugins to Plugins section of documentation |
-+---------+------------+---------------------------------------------+
-| 1.1.0   | 2016-05-26 | Changed UnknownModule exception to          |
-|         |            | UnknownPlugin                               |
-+---------+------------+---------------------------------------------+
-| 2.0.0   | 2016-06-05 | Replaced pyenv global commands and fixed    |
-|         |            | issue with vim in homebrew plugin; using    |
-|         |            | os.path.realpath instead of readlink in git |
-|         |            | plugin; has function; added ckver, current, |
-|         |            | latest functions to freebsd plugin; using   |
-|         |            | kron instead of date command; renamed       |
-|         |            | microsoft plugin to macosx_microsoft;       |
-|         |            | simplified function naming, logging;        |
-|         |            | updated documentation                       |
-+---------+------------+---------------------------------------------+
-| 2.0.1   | 2016-06-06 | Fixes for freebsd plugin                    |
-+---------+------------+---------------------------------------------+
-| 2.0.2   | 2016-07-18 | Fix cask plugin failing when `cask list`    |
-|         |            | gives name along with " (!)"; fix clamav    |
-|         |            | plugin failing due to exiting with 1 when   |
-|         |            | already up-to-date                          |
-+---------+------------+---------------------------------------------+
-| 2.0.3   | 2016-08-02 | Added ASCII art banner; improved logging in |
-|         |            | cask plugin                                 |
-+---------+------------+---------------------------------------------+
-| 2.0.4   | 2016-08-03 | Renamed macosx to macos & macosx_microsoft  |
-|         |            | to macos_microsoft; increased verbosity of  |
-|         |            | cask plugin; added banner to usage (-h)     |
-+---------+------------+---------------------------------------------+
-| 2.0.5   | 2016-08-05 | Fix join error in cask plugin               |
-+---------+------------+---------------------------------------------+
-| 2.0.6   | 2016-08-05 | Added Contact section with URLs to header   |
-+---------+------------+---------------------------------------------+
-| 2.0.7   | 2016-09-22 | Use `--verbose` instead of `-v` with macos  |
-|         |            | plugin `softwareupdate`                     |
-+---------+------------+---------------------------------------------+
-| 2.0.8   | 2016-11-30 | Added `--format=legacy` to `pip list`       |
-|         |            | command in pip plugin; disable uploading    |
-|         |            | documentation to pythonhosted site (will    |
-|         |            | transition to readthedocs)                  |
-+---------+------------+---------------------------------------------+
-| 2.0.9   | 2016-12-08 | Removed cask plugin; remove the `--all`     |
-|         |            | option from the `brew upgrade` command; fix |
-|         |            | the npm plugin; minor fixes to output       |
-+---------+------------+---------------------------------------------+
-| 2.0.10  | 2017-12-17 | Fix the npm plugin to avoid "broken"        |
-|         |            | outdated command; fix pyenv plugin to       |
-|         |            | properly show the latest stable 2.x and 3.x |
-|         |            | versions of Python; other minor fixes       |
-+---------+------------+---------------------------------------------+
-| 2.0.11  | 2017-12-17 | Fix bug in build system preventing the      |
-|         |            | banner version from being updated           |
-+---------+------------+---------------------------------------------+
-| 2.0.12  | 2017-12-18 | Fix the rbenv plugin to properly show the   |
-|         |            | latest stable 2.x version of Ruby           |
-+---------+------------+---------------------------------------------+
-| 2.1.0   | 2017-12-29 | Add conda plugin                            |
-+---------+------------+---------------------------------------------+
-| 2.1.1   | 2017-12-30 | pip plugin only upgrades packages not       |
-|         |            | installed as dependencies and allows        |
-|         |            | ignoring packages in the config file; fix   |
-|         |            | --show-config output                        |
-+---------+------------+---------------------------------------------+
-| 2.1.2   | 2017-12-30 | Fix error "Upload failed (400): Only one    |
-|         |            | sdist may be uploaded per release" in       |
-|         |            | favor of zip versus tar.gz                  |
-+---------+------------+---------------------------------------------+
-| 2.1.3   | 2017-12-30 | Fix conda and pip plugins output            |
-+---------+------------+---------------------------------------------+
-| 2.1.4   | 2017-12-30 | Fix issue not building documentation        |
-+---------+------------+---------------------------------------------+
-| 2.1.5   | 2018-01-02 | Add conda self updating and don't confirm   |
-+---------+------------+---------------------------------------------+
-| 2.2.0   | 2018-01-05 | Add geoip plugin; fix conda in doc          |
-+---------+------------+---------------------------------------------+
-| 2.2.1   | 2018-01-05 | Activate geoip plugin                       |
-+---------+------------+---------------------------------------------+
-| 2.2.2   | 2018-01-05 | Fix pyenv plugin to show latest anaconda    |
-|         |            | versions                                    |
-+---------+------------+---------------------------------------------+
-| 2.2.3   | 2018-01-05 | Fix cpanm plugin output; update usage in    |
-|         |            | doc                                         |
-+---------+------------+---------------------------------------------+
-| 2.2.4   | 2018-01-22 | Remove extraneous newline in pip plugin     |
-+---------+------------+---------------------------------------------+
+* 2.2.4 (2018-01-22): Remove extraneous newline in pip plugin
+* 2.2.3 (2018-01-05): Fix cpanm plugin output; update usage in doc
+* 2.2.2 (2018-01-05): Fix pyenv plugin to show latest anaconda
+  versions
+* 2.2.1 (2018-01-05): Activate geoip plugin
+* 2.2.0 (2018-01-05): Add geoip plugin; fix conda in doc
+* 2.1.5 (2018-01-02): Add conda self updating and don't confirm
+* 2.1.4 (2017-12-30): Fix issue not building documentation
+* 2.1.3 (2017-12-30): Fix conda and pip plugins output
+* 2.1.2 (2017-12-30): Fix error "Upload failed (400): Only one sdist
+  may be uploaded per release" in favor of zip versus tar.gz
+* 2.1.1 (2017-12-30): pip plugin only upgrades packages not installed
+  as dependencies and allows ignoring packages in the config file; fix
+  --show-config output
+* 2.1.0 (2017-12-29): Add conda plugin
+* 2.0.12 (2017-12-18): Fix the rbenv plugin to properly show the
+  latest stable 2.x version of Ruby
+* 2.0.11 (2017-12-17): Fix bug in build system preventing the banner
+  version from being updated
+* 2.0.10 (2017-12-17): Fix the npm plugin to avoid "broken" outdated
+  command; fix pyenv plugin to properly show the latest stable 2.x and
+  3.x versions of Python; other minor fixes
+* 2.0.9 (2016-12-08): Removed cask plugin; remove the `--all` option
+  from the `brew upgrade` command; fix the npm plugin; minor fixes to
+  output
+* 2.0.8 (2016-11-30): Added `--format=legacy` to `pip list` command
+  in pip plugin; disable uploading documentation to pythonhosted site
+  (will transition to readthedocs)
+* 2.0.7 (2016-09-22): Use `--verbose` instead of `-v` with macos
+  plugin `softwareupdate`
+* 2.0.6 (2016-08-05): Added Contact section with URLs to header
+* 2.0.5 (2016-08-05): Fix join error in cask plugin
+* 2.0.4 (2016-08-03): Renamed macosx to macos & macosx_microsoft to
+  macos_microsoft; increased verbosity of cask plugin; added banner to
+  usage (-h)
+* 2.0.3 (2016-08-02): Added ASCII art banner; improved logging in
+  cask plugin
+* 2.0.2 (2016-07-18): Fix cask plugin failing when `cask list` gives
+  name along with " (!)"; fix clamav plugin failing due to exiting
+  with 1 when already up-to-date
+* 2.0.1 (2016-06-06): Fixes for freebsd plugin
+* 2.0.0 (2016-06-05): Replaced pyenv global commands and fixed issue
+  with vim in homebrew plugin; using os.path.realpath instead of
+  readlink in git plugin; has function; added ckver, current, latest
+  functions to freebsd plugin; using kron instead of date command;
+  renamed microsoft plugin to macosx_microsoft; simplified function
+  naming, logging; updated documentation
+* 1.1.0 (2016-05-26): Changed UnknownModule exception to UnknownPlugin
+* 1.0.7 (2016-05-26): Added descriptions of aptget and yum plugins to
+  Plugins section of documentation
+* 1.0.6 (2016-05-26): Add aptget and yum plugins to documentation
+* 1.0.5 (2016-05-26): Pipe stderr in runp, aptget and yum plugins
+* 1.0.4 (2016-05-26): Documentation: moved content from readme, fixed
+  typo, renamed apple plugin to macosx; Code: run brew upgrade via
+  shell, log exceptions as errors, log command
+* 1.0.3 (2016-05-25): Improved release automation
+* 1.0.2 (2016-05-25): More work on release script and documentation
+* 1.0.1 (2016-05-25): Fixed release script, rearranged documentation
+* 1.0.0 (2016-05-25): Initial release
 
 Issues
 ------
