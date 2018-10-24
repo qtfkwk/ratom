@@ -1,15 +1,15 @@
 """Common things shared across RATOM"""
 
 # File: ratom/common.py
-# Version: 2.2.5
-# Date: 2018-01-31
+# Version: 3.0.0
+# Date: 2018-10-24
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 # Variables
 
-__version__ = '2.2.5'
+__version__ = '3.0.0'
 directory = '~/.ratom'
 conf = directory + '/config.json'
 defaults = dict(
@@ -52,9 +52,6 @@ import re
 import shlex
 import subprocess
 import sys
-
-# unbuffered stdout
-sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 # better json.dumps
 def json_dumps(obj):
@@ -140,7 +137,7 @@ def info(msg):
         log.info(msg)
 
 def write_cfg(cfg, c):
-    h = open(c, 'wb')
+    h = open(c, 'w')
     h.write(json_dumps(cfg) + '\n')
     h.close()
 
@@ -193,7 +190,7 @@ def init(argv=None, cfg=None):
                 return 'macos_microsoft'
             else:
                 return x
-        cfg['plugins'] = map(macosx_macos, cfg['plugins'])
+        cfg['plugins'] = list(map(macosx_macos, cfg['plugins']))
         write_cfg(cfg, c)
 
     else:

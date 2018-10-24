@@ -3,13 +3,13 @@
 """update Homebrew packages"""
 
 # File: ratom/homebrew.py
-# Version: 2.2.5
-# Date: 2018-01-31
+# Version: 3.0.0
+# Date: 2018-10-24
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
-from common import *
+from .common import *
 
 def check():
     """check if can update Homebrew packages"""
@@ -21,9 +21,9 @@ def _pyenv(version, dryrun=False):
     k = 'PYENV_VERSION'
     r = os.environ[k]
     if dryrun:
-        print t.bold_red('$ export PYENV_VERSION=\'%s\'' % version)
+        print(t.bold_red('$ export PYENV_VERSION=\'%s\'' % version))
     else:
-        print t.bold('$ export PYENV_VERSION=\'%s\'' % version) + '\n'
+        print(t.bold('$ export PYENV_VERSION=\'%s\'' % version) + '\n')
         os.environ[k] = version
     return r
 
@@ -35,7 +35,7 @@ def main(argv=None, cfg=None):
         info('homebrew: failed check')
         return
     section_begin('Homebrew')
-    v = runp('pyenv global')[1].strip('\n')
+    v = str(runp('pyenv global')[1]).strip('\n')
     d = cfg['dryrun']
     run('brew update', dryrun=d)
     if has('pyenv'):

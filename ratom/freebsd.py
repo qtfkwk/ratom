@@ -3,23 +3,23 @@
 """update FreeBSD"""
 
 # File: ratom/freebsd.py
-# Version: 2.2.5
-# Date: 2018-01-31
+# Version: 3.0.0
+# Date: 2018-10-24
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
-from common import *
+from .common import *
 
 import re
 
 def check():
     """check if can update FreeBSD"""
-    return filter(has, [
+    return list(filter(has, [
         'freebsd-update',
         'portsnap',
         'pkg',
-    ])
+    ]))
 
 def current():
     if has('freebsd-version'):

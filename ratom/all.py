@@ -3,32 +3,32 @@
 """imports and runs all plugins"""
 
 # File: ratom/all.py
-# Version: 2.2.5
-# Date: 2018-01-31
+# Version: 3.0.0
+# Date: 2018-10-24
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
-from common import *
+from .common import *
 
-import aptget
-import clamav
-import conda
-import cpanm
-import freebsd
-import gem
-import geoip
-import git
-import homebrew
-import macos
-import macos_microsoft
-import msf
-import npm
-import perlbrew
-import pip
-import pyenv
-import rbenv
-import yum
+from . import aptget
+from . import clamav
+from . import conda
+from . import cpanm
+from . import freebsd
+from . import gem
+from . import geoip
+from . import git
+from . import homebrew
+from . import macos
+from . import macos_microsoft
+from . import msf
+from . import npm
+from . import perlbrew
+from . import pip
+from . import pyenv
+from . import rbenv
+from . import yum
 
 plugins = dict(
     aptget=aptget,

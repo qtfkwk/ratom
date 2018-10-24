@@ -3,13 +3,13 @@
 """update Perl modules via CPANM"""
 
 # File: ratom/cpanm.py
-# Version: 2.2.5
-# Date: 2018-01-31
+# Version: 3.0.0
+# Date: 2018-10-24
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
-from common import *
+from .common import *
 
 def check():
     """check if can update Perl modules via CPANM"""
@@ -25,12 +25,12 @@ def main(argv=None, cfg=None):
         info('cpanm: failed check')
         return
     section_begin('Perl modules')
-    print '\n' + t.bold('$ cpan-outdated -p')
-    modules = filter(lambda x: x != '', runp('cpan-outdated -p')[1].split('\n'))
+    print('\n' + t.bold('$ cpan-outdated -p'))
+    modules = list(filter(lambda x: x != '', runp('cpan-outdated -p')[1].split('\n')))
     if len(modules) > 0:
         for module in modules:
-            print module
-        print
+            print(module)
+        print()
         for module in modules:
             run('cpanm %s' % module, dryrun=cfg['dryrun'])
     section_end()

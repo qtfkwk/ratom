@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 
 # File: setup.py
-# Version: 2.2.5
-# Date: 2018-01-31
+# Version: 3.0.0
+# Date: 2018-10-24
 # Author: qtfkwk <qtfkwk+ratom@gmail.com>
 # Copyright: (C) 2016 by qtfkwk
 # License: BSD 2-Clause License (https://opensource.org/licenses/BSD-2-Clause)
 
 import setuptools
 
-v = '2.2.5'
+v = '3.0.0'
 
 cfg = dict(
     name='ratom',
@@ -17,7 +17,7 @@ cfg = dict(
     author='qtfkwk',
     author_email='qtfkwk+ratom@gmail.com',
     description='Rage Against The Outdated Machine',
-    long_description=open('README.rst', 'rb').read(),
+    long_description=open('README.rst', 'r').read(),
     packages=setuptools.find_packages(),
     install_requires=[
         'blessings',
@@ -65,9 +65,9 @@ if __name__ == '__main__':
             r"rm -f ratom/*.py_ setup.py_ *.sh_ %s_ %s_" % (doc, conf),
         ]
         for i in c:
-            print ratom.t.bold('$ ' + i)
+            print(ratom.t.bold('$ ' + i))
             ratom.run_(i, shell=True)
-        sys.argv = filter(lambda x: x != 'update', sys.argv)
+        sys.argv = list(filter(lambda x: x != 'update', sys.argv))
         if len(sys.argv) < 2:
             sys.exit(0)
     if 'doc' in a:
@@ -78,9 +78,9 @@ if __name__ == '__main__':
             r'cp doc/build/latex/ratom.pdf doc/ratom-doc.pdf',
         ]
         for i in c:
-            print ratom.t.bold('$ ' + i)
+            print(ratom.t.bold('$ ' + i))
             ratom.run_(i)
-        sys.argv = filter(lambda x: x != 'doc', sys.argv)
+        sys.argv = list(filter(lambda x: x != 'doc', sys.argv))
         if len(sys.argv) < 2:
             sys.exit(0)
     setuptools.setup(**cfg)
