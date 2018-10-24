@@ -100,6 +100,7 @@ RATOM can be used in a few ways...
 Versions
 --------
 
+* 3.0.0 (2018-10-24): Add support for Python 3
 * 2.2.5 (2018-01-31): Convert releases table in documentation; UTC
   date in update hook
 * 2.2.4 (2018-01-22): Remove extraneous newline in pip plugin
